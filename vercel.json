@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "python3 tools/sitegen.py export && cd web && npm ci && npm run build",
+  "outputDirectory": "web/dist",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}

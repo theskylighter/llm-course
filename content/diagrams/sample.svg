@@ -1,0 +1,16 @@
+<svg viewBox="0 0 520 120" width="100%" style="max-width:520px" xmlns="http://www.w3.org/2000/svg" font-size="14" font-family="system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,1 L10,6 L0,11 z" fill="#333"/>
+    </marker>
+  </defs>
+  <g fill="#fffbe8" stroke="#333" stroke-width="1.4">
+    <rect x="10" y="35" width="130" height="50" rx="8"/><rect x="195" y="35" width="130" height="50" rx="8"/><rect x="380" y="35" width="130" height="50" rx="8"/>
+  </g>
+  <g stroke="#333" stroke-width="1.4" marker-end="url(#arrow)">
+    <line x1="140" y1="60" x2="193" y2="60"/><line x1="325" y1="60" x2="378" y2="60"/>
+  </g>
+  <g text-anchor="middle" fill="#111">
+    <text x="75" y="65">Syllabus</text><text x="260" y="65">Lessons</text><text x="445" y="65">Live site</text>
+  </g>
+</svg>

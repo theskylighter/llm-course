@@ -1,0 +1,35 @@
+{
+  "title": "Introduction to Large Language Models",
+  "chapters": [
+    {
+      "title": "Start Here",
+      "lessons": [
+        {
+          "slug": "00_welcome",
+          "title": "Welcome",
+          "syllabus": "Overview"
+        }
+      ]
+    },
+    {
+      "title": "Chapter 1 · Writing Lessons",
+      "lessons": [
+        {
+          "slug": "01_1_anatomy",
+          "title": "Anatomy of a Lesson",
+          "syllabus": "Unit 1"
+        },
+        {
+          "slug": "01_2_code_examples",
+          "title": "Code Examples That Are Always Correct",
+          "syllabus": "Unit 1"
+        },
+        {
+          "slug": "p1_practice",
+          "title": "Practice Set 1",
+          "syllabus": "Practice"
+        }
+      ]
+    }
+  ]
+}

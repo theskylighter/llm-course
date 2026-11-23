@@ -1,0 +1,22 @@
+# Build output and local caches
+dist/
+web/dist/
+.cache/
+.vercel/
+
+# Dependencies
+node_modules/
+web/node_modules/
+
+# Generated from content/ by tools/sitegen.py export
+web/src/data/lessons.json
+
+# Python
+__pycache__/
+*.pyc
+
+# Editors / OS
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store

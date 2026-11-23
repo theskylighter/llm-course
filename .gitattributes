@@ -1,0 +1,5 @@
+# Normalise line endings so Windows and Linux (Vercel) builds see identical files.
+* text=auto eol=lf
+*.svg text eol=lf
+*.png binary
+*.ico binary
