@@ -88,6 +88,20 @@ button { font: inherit; color: inherit; }
 .ptitle { flex: 1; min-width: 0; color: var(--muted); font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .topbar-actions { display: flex; align-items: center; gap: 4px; }
 
+/* Reading progress: shown only where the right-hand "On this page" panel is hidden. */
+.reading-progress { display: none; }
+@keyframes reading-progress { to { transform: scaleX(1); } }
+@media (max-width: 1200px) { /* keep in sync with the .toc-aside breakpoint below */
+  .reading-progress {
+    display: block; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px;
+    background: #2563eb; transform: scaleX(0); transform-origin: left; pointer-events: none;
+    will-change: transform;
+  }
+  @supports (animation-timeline: scroll()) {
+    .reading-progress { animation: reading-progress linear both; animation-timeline: scroll(root block); }
+  }
+}
+
 /* ---------- shell ---------- */
 .layout { display: flex; align-items: flex-start; min-height: calc(100vh - var(--topbar-h)); }
 main { flex: 1; min-width: 0; padding: 32px 48px 80px; }
@@ -337,7 +351,7 @@ code, pre, .codewrap pre { font-variant-ligatures: none; font-feature-settings: 
 @media (max-width: 600px) {
   .topbar { gap: 6px; padding: 0 10px; }
   .topbar-sep, .ptitle { display: none; }
-  .brand { flex: 1; min-width: 0; }
+  .brand { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .topbar .icon-btn, .topbar .btn-ghost { width: 40px; height: 40px; padding: 0; }
   .btn-ghost .label { display: none; }
   .codelabel { display: none; }   /* the language tag would overlap the first line of code */

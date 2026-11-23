@@ -4,6 +4,7 @@ import { Eye, EyeOff, GraduationCap, Menu, Moon, Sun } from "lucide-react";
 import { useDarkMode, useMediaQuery, useStoredBoolean } from "../hooks";
 import { course, findLesson, HOME_SLUG } from "../course";
 import { site, storageKey } from "../site";
+import { ReadingProgress } from "./ReadingProgress";
 import { Sidebar } from "./Sidebar";
 import { TocPanel } from "./TocPanel";
 
@@ -106,6 +107,7 @@ export function Layout() {
             {dark ? <Sun className="icon" size={18} aria-hidden="true" /> : <Moon className="icon" size={18} aria-hidden="true" />}
           </button>
         </div>
+        <ReadingProgress />
       </header>
       <div className="layout">
         <div className={`drawer-backdrop${drawerOpen ? " open" : ""}`} onClick={closeDrawer} aria-hidden="true" />
