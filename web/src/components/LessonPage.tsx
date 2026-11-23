@@ -1,4 +1,6 @@
 import { MouseEvent, useEffect, useRef } from "react";
+import katex from "katex";
+import "katex/dist/katex.min.css";
 import { Link, Navigate, useLocation, useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, BookMarked, Clock } from "lucide-react";
 import { findLesson, HOME_SLUG, lessonOrder, lessonPath } from "../course";
@@ -31,6 +33,23 @@ export function LessonPage() {
       d.open = showAll;
     });
   }, [showAll, slug]);
+
+  // Render TeX spans (written as $...$ and $$...$$ in the lessons) with KaTeX.
+  useEffect(() => {
+    bodyRef.current?.querySelectorAll<HTMLElement>(".math[data-tex]").forEach((el) => {
+      if (el.dataset.done) return;
+      try {
+        katex.render(el.dataset.tex ?? "", el, {
+          displayMode: el.classList.contains("display"),
+          throwOnError: true,
+        });
+        el.dataset.done = "1";
+      } catch (e) {
+        el.classList.add("math-error");
+        el.dataset.done = "err";
+      }
+    });
+  }, [slug]);
 
   // Add a copy button to every code block (not output or ASCII-diagram blocks).
   useEffect(() => {

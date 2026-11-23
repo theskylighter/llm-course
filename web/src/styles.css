@@ -28,6 +28,7 @@
   --c-def: #7c3aed;  --c-analogy: #0d9488; --c-mistakes: #dc2626; --c-exam: #4f46e5;
   --c-key: #16a34a;  --c-note: #2563eb;    --c-tip: #ca8a04;      --c-warn: #db2777;
   --c-example: #059669; --c-summary: #0891b2; --c-q: #2563eb;
+  --c-lecture: #b45309; --c-slides: #0369a1; --c-compiler: #6b7280; --c-scribe: #be185d; --c-codebox: #15803d;
 }
 html.dark {
   --bg: #0f1013;
@@ -44,6 +45,7 @@ html.dark {
   --c-def: #a78bfa;  --c-analogy: #2dd4bf; --c-mistakes: #f87171; --c-exam: #818cf8;
   --c-key: #4ade80;  --c-note: #60a5fa;    --c-tip: #facc15;      --c-warn: #f472b6;
   --c-example: #34d399; --c-summary: #22d3ee; --c-q: #7aa2ff;
+  --c-lecture: #fbbf24; --c-slides: #38bdf8; --c-compiler: #9ca3af; --c-scribe: #f472b6; --c-codebox: #4ade80;
 }
 
 /* ---------- base ---------- */
@@ -219,6 +221,20 @@ code { background: var(--inline-code-bg); padding: .1em .35em; border-radius: 4p
 .box.warn     { --c: var(--c-warn); }
 .box.example  { --c: var(--c-example); }
 .box.summary  { --c: var(--c-summary); }
+.box.lecture  { --c: var(--c-lecture); }
+.box.slides   { --c: var(--c-slides); }
+.box.compiler { --c: var(--c-compiler); }
+.box.scribe   { --c: var(--c-scribe); }
+.box.codebox  { --c: var(--c-codebox); }
+.box.lecture .boxtitle::before  { -webkit-mask-image: url("./assets/icons/mic.svg");          mask-image: url("./assets/icons/mic.svg"); }
+.box.slides .boxtitle::before   { -webkit-mask-image: url("./assets/icons/presentation.svg"); mask-image: url("./assets/icons/presentation.svg"); }
+.box.compiler .boxtitle::before { -webkit-mask-image: url("./assets/icons/wrench.svg");       mask-image: url("./assets/icons/wrench.svg"); }
+.box.scribe .boxtitle::before   { -webkit-mask-image: url("./assets/icons/pen-tool.svg");     mask-image: url("./assets/icons/pen-tool.svg"); }
+.box.codebox .boxtitle::before  { -webkit-mask-image: url("./assets/icons/terminal.svg");     mask-image: url("./assets/icons/terminal.svg"); }
+.math.display { margin: 14px 0; overflow-x: auto; overflow-y: hidden; max-width: 100%; text-align: center; }
+.box .math.display { margin: 10px 0; }
+/* a long inline formula scrolls inside itself instead of widening the page */
+.math:not(.display) { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: bottom; }
 .box.def .boxtitle::before      { -webkit-mask-image: url("./assets/icons/book-open.svg");      mask-image: url("./assets/icons/book-open.svg"); }
 .box.analogy .boxtitle::before  { -webkit-mask-image: url("./assets/icons/brain.svg");          mask-image: url("./assets/icons/brain.svg"); }
 .box.mistakes .boxtitle::before { -webkit-mask-image: url("./assets/icons/triangle-alert.svg"); mask-image: url("./assets/icons/triangle-alert.svg"); }

@@ -6,27 +6,352 @@
       "lessons": [
         {
           "slug": "00_welcome",
-          "title": "Welcome",
+          "title": "Welcome and How to Use This Course",
           "syllabus": "Overview"
         }
       ]
     },
     {
-      "title": "Chapter 1 · Writing Lessons",
+      "title": "Chapter 1 \u00b7 Language Models and N-grams",
       "lessons": [
         {
-          "slug": "01_1_anatomy",
-          "title": "Anatomy of a Lesson",
-          "syllabus": "Unit 1"
+          "slug": "01_1_what_is_lm",
+          "title": "What Is a Language Model?",
+          "syllabus": "Unit 1 \u00b7 Foundations"
         },
         {
-          "slug": "01_2_code_examples",
-          "title": "Code Examples That Are Always Correct",
-          "syllabus": "Unit 1"
+          "slug": "01_2_ambiguity_stack",
+          "title": "Why NLP Is Hard: Ambiguity and the NLP Stack",
+          "syllabus": "Unit 1 \u00b7 Foundations"
+        },
+        {
+          "slug": "01_3_ngram_markov",
+          "title": "Chain Rule, Markov Assumption and N-grams",
+          "syllabus": "Unit 1 \u00b7 Foundations"
+        },
+        {
+          "slug": "01_4_sparsity_add_one",
+          "title": "Zero Counts and Add-One Smoothing",
+          "syllabus": "Unit 1 \u00b7 Foundations"
+        },
+        {
+          "slug": "01_5_good_turing_kn",
+          "title": "Good-Turing, Back-off and Kneser-Ney",
+          "syllabus": "Unit 1 \u00b7 Foundations"
+        },
+        {
+          "slug": "01_6_perplexity",
+          "title": "Evaluating a Language Model: Perplexity",
+          "syllabus": "Unit 1 \u00b7 Foundations"
+        }
+      ]
+    },
+    {
+      "title": "Chapter 2 \u00b7 Neural Foundations",
+      "lessons": [
+        {
+          "slug": "02_1_perceptron_xor",
+          "title": "Perceptron and the XOR Problem",
+          "syllabus": "Unit 1 \u00b7 Foundations"
+        },
+        {
+          "slug": "02_2_mlp_activations",
+          "title": "MLP and Activation Functions",
+          "syllabus": "Unit 1 \u00b7 Foundations"
+        },
+        {
+          "slug": "02_3_backprop_vanishing",
+          "title": "Backpropagation and Vanishing Gradients",
+          "syllabus": "Unit 1 \u00b7 Foundations"
+        },
+        {
+          "slug": "02_4_cnn_rnn_attention",
+          "title": "From CNN and RNN to the Attention Bottleneck",
+          "syllabus": "Unit 1 \u00b7 Foundations"
         },
         {
           "slug": "p1_practice",
-          "title": "Practice Set 1",
+          "title": "Practice Set 1: Foundations",
+          "syllabus": "Practice"
+        }
+      ]
+    },
+    {
+      "title": "Chapter 3 \u00b7 The Transformer",
+      "lessons": [
+        {
+          "slug": "03_1_why_remove_recurrence",
+          "title": "Why Remove Recurrence?",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "03_2_self_attention_qkv",
+          "title": "Self-Attention: Queries, Keys and Values",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "03_3_scaling_sqrt_dk",
+          "title": "Why Divide by the Square Root of d_k",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "03_4_positional_encoding",
+          "title": "Positional Encoding: The Ladder of Attempts",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "03_5_multi_head_attention",
+          "title": "Multi-Head Attention",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "03_6_ffn_residual",
+          "title": "Feed-Forward Network and Residual Connections",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "03_7_layer_norm",
+          "title": "Layer Normalization",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "03_8_masked_cross_attention",
+          "title": "Masked and Cross-Attention",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "03_9_transformer_training",
+          "title": "Putting It Together: Training a Transformer",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "03_10_rope",
+          "title": "Relative Positions and RoPE",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "p2_practice",
+          "title": "Practice Set 2: The Transformer",
+          "syllabus": "Practice"
+        }
+      ]
+    },
+    {
+      "title": "Chapter 4 \u00b7 Efficient Attention",
+      "lessons": [
+        {
+          "slug": "04_1_kv_cache",
+          "title": "KV-Cache",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "04_2_mqa_gqa",
+          "title": "Multi-Query and Grouped-Query Attention",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "04_3_sliding_window",
+          "title": "Sliding-Window Attention",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        },
+        {
+          "slug": "04_4_flash_attention",
+          "title": "FlashAttention and Online Softmax",
+          "syllabus": "Unit 2 \u00b7 Transformers"
+        }
+      ]
+    },
+    {
+      "title": "Chapter 5 \u00b7 Pretraining Objectives",
+      "lessons": [
+        {
+          "slug": "05_1_elmo",
+          "title": "From Static Vectors to ELMo",
+          "syllabus": "Unit 3 \u00b7 Pretraining"
+        },
+        {
+          "slug": "05_2_bert_mlm",
+          "title": "BERT and Masked Language Modeling",
+          "syllabus": "Unit 3 \u00b7 Pretraining"
+        },
+        {
+          "slug": "05_3_bert_cls_qa",
+          "title": "BERT: NSP, [CLS] and Question Answering",
+          "syllabus": "Unit 3 \u00b7 Pretraining"
+        },
+        {
+          "slug": "05_4_bart_t5",
+          "title": "Encoder-Decoder Pretraining: BART and T5",
+          "syllabus": "Unit 3 \u00b7 Pretraining"
+        },
+        {
+          "slug": "05_5_decoder_only",
+          "title": "Decoder-Only Models: GPT and LLaMA",
+          "syllabus": "Unit 3 \u00b7 Pretraining"
+        },
+        {
+          "slug": "05_6_scaling_laws",
+          "title": "Scaling Laws and Chinchilla",
+          "syllabus": "Unit 3 \u00b7 Pretraining"
+        },
+        {
+          "slug": "p3_practice",
+          "title": "Practice Set 3: Attention Efficiency and Pretraining",
+          "syllabus": "Practice"
+        }
+      ]
+    },
+    {
+      "title": "Chapter 6 \u00b7 Prompting and Alignment",
+      "lessons": [
+        {
+          "slug": "06_1_instruction_tuning",
+          "title": "Instruction Tuning",
+          "syllabus": "Unit 4 \u00b7 Prompting and Alignment"
+        },
+        {
+          "slug": "06_2_synthetic_instructions",
+          "title": "Where Instruction Data Comes From",
+          "syllabus": "Unit 4 \u00b7 Prompting and Alignment"
+        },
+        {
+          "slug": "06_3_prompting_cot",
+          "title": "Prompting, Chain of Thought and Sensitivity",
+          "syllabus": "Unit 4 \u00b7 Prompting and Alignment"
+        },
+        {
+          "slug": "06_4_reward_model",
+          "title": "Reward Models and Bradley-Terry",
+          "syllabus": "Unit 4 \u00b7 Prompting and Alignment"
+        },
+        {
+          "slug": "06_5_rlhf_ppo",
+          "title": "RLHF with PPO",
+          "syllabus": "Unit 4 \u00b7 Prompting and Alignment"
+        },
+        {
+          "slug": "06_6_dpo",
+          "title": "Direct Preference Optimization",
+          "syllabus": "Unit 4 \u00b7 Prompting and Alignment"
+        }
+      ]
+    },
+    {
+      "title": "Chapter 7 \u00b7 Efficient Fine-Tuning and Compression",
+      "lessons": [
+        {
+          "slug": "07_1_soft_prefix_tuning",
+          "title": "Prompt Tuning and Prefix Tuning",
+          "syllabus": "Unit 5 \u00b7 Efficient Fine-Tuning"
+        },
+        {
+          "slug": "07_2_adapters_lora",
+          "title": "Adapters and LoRA",
+          "syllabus": "Unit 5 \u00b7 Efficient Fine-Tuning"
+        },
+        {
+          "slug": "07_3_quantization",
+          "title": "Quantization",
+          "syllabus": "Unit 5 \u00b7 Efficient Fine-Tuning"
+        },
+        {
+          "slug": "07_4_qlora_prune_distill",
+          "title": "QLoRA, Pruning and Distillation",
+          "syllabus": "Unit 5 \u00b7 Efficient Fine-Tuning"
+        },
+        {
+          "slug": "p4_practice",
+          "title": "Practice Set 4: Alignment and Efficient Fine-Tuning",
+          "syllabus": "Practice"
+        }
+      ]
+    },
+    {
+      "title": "Chapter 8 \u00b7 Augmented LLMs",
+      "lessons": [
+        {
+          "slug": "08_1_rag",
+          "title": "Retrieval-Augmented Generation",
+          "syllabus": "Unit 6 \u00b7 Augmented LLMs"
+        },
+        {
+          "slug": "08_2_tools_agents",
+          "title": "Tool Use and Agents",
+          "syllabus": "Unit 6 \u00b7 Augmented LLMs"
+        },
+        {
+          "slug": "08_3_knowledge_graphs",
+          "title": "Knowledge Graphs and TransE",
+          "syllabus": "Unit 6 \u00b7 Augmented LLMs"
+        }
+      ]
+    },
+    {
+      "title": "Chapter 9 \u00b7 Multilingual and Multimodal Models",
+      "lessons": [
+        {
+          "slug": "09_1_multilingual",
+          "title": "Multilingual Language Models",
+          "syllabus": "Unit 7 \u00b7 Multilingual and Multimodal"
+        },
+        {
+          "slug": "09_2_vit_clip",
+          "title": "Vision Transformer and Multimodal Models",
+          "syllabus": "Unit 7 \u00b7 Multilingual and Multimodal"
+        }
+      ]
+    },
+    {
+      "title": "Chapter 10 \u00b7 Responsible LLMs",
+      "lessons": [
+        {
+          "slug": "10_1_bias",
+          "title": "Bias and How to Measure It",
+          "syllabus": "Unit 8 \u00b7 Responsible LLMs"
+        },
+        {
+          "slug": "10_2_toxicity_hallucination",
+          "title": "Toxicity and Hallucination",
+          "syllabus": "Unit 8 \u00b7 Responsible LLMs"
+        }
+      ]
+    },
+    {
+      "title": "Chapter 11 \u00b7 Advanced Topics",
+      "lessons": [
+        {
+          "slug": "11_1_reasoning",
+          "title": "Reasoning: From Chains to Programs",
+          "syllabus": "Unit 9 \u00b7 Advanced Topics"
+        },
+        {
+          "slug": "11_2_long_context",
+          "title": "Long Context: ALiBi and Position Interpolation",
+          "syllabus": "Unit 9 \u00b7 Advanced Topics"
+        },
+        {
+          "slug": "11_3_model_editing",
+          "title": "Model Editing",
+          "syllabus": "Unit 9 \u00b7 Advanced Topics"
+        },
+        {
+          "slug": "11_4_self_evolution",
+          "title": "Self-Evolving LLMs",
+          "syllabus": "Unit 9 \u00b7 Advanced Topics"
+        },
+        {
+          "slug": "11_5_interpretability",
+          "title": "Interpretability: Residual Stream and Circuits",
+          "syllabus": "Unit 9 \u00b7 Advanced Topics"
+        },
+        {
+          "slug": "p5_practice",
+          "title": "Practice Set 5: Augmentation to Advanced Topics",
+          "syllabus": "Practice"
+        },
+        {
+          "slug": "p6_mock_paper",
+          "title": "Mock Paper",
           "syllabus": "Practice"
         }
       ]

@@ -43,3 +43,5 @@ After editing a lesson, run `export` again (or restart `npm run dev`).
 ## Deploying (Vercel)
 
 `vercel.json` already runs the export and the web build and serves `web/dist` with single-page-app rewrites. Connect the GitHub repo to a Vercel project and every push to `main` deploys.
+
+The code examples use the standard library and NumPy, so install NumPy (`pip install numpy`) before running `python tools/sitegen.py check`. Math is written in LaTeX (`$...$`, `$$...$$`) and rendered with KaTeX. `cd web && npm run test` is an alias for `npm run e2e`.

@@ -8,8 +8,9 @@
 // both side panels collapse and remember it, the phone drawer works, nothing scrolls sideways on a
 // phone, and the console stays clean. Checks that cannot apply (for example scrolling a course list
 // that is shorter than the screen) are reported as SKIP rather than silently passing.
+import { homedir } from "node:os";
 import { spawn, execSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium, devices } from "playwright-core";
@@ -30,6 +31,13 @@ function findChrome() {
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     "/usr/bin/google-chrome", "/usr/bin/google-chrome-stable", "/usr/bin/chromium", "/usr/bin/chromium-browser",
   ];
+  // Fall back to a Chromium downloaded by Playwright (~/.cache/ms-playwright), newest first.
+  try {
+    const root = resolve(homedir(), ".cache/ms-playwright");
+    for (const dir of readdirSync(root).filter((n) => /^chromium-\d+$/.test(n)).sort().reverse()) {
+      candidates.push(resolve(root, dir, "chrome-linux64/chrome"), resolve(root, dir, "chrome-linux/chrome"));
+    }
+  } catch { /* no Playwright cache */ }
   const found = candidates.find((c) => c && existsSync(c));
   if (!found) throw new Error("Chrome not found. Install it or set CHROME_PATH to the executable.");
   return found;

@@ -22,6 +22,14 @@ from .config import DIAGRAMS_DIR
 # --------------------------------------------------------------------------- inline
 
 
+def math_span(tex: str, display: bool = False) -> str:
+    """A TeX span; the web app renders it with KaTeX (the escaped source is the fallback)."""
+    esc = html.escape(tex.strip(), quote=True)
+    if display:
+        return f'<div class="math display" data-tex="{esc}">{esc}</div>'
+    return f'<span class="math" data-tex="{esc}">{esc}</span>'
+
+
 def inline(text: str) -> str:
     """Render inline formatting. Code spans are stashed first so their contents stay literal."""
     codes: list[str] = []
@@ -30,7 +38,12 @@ def inline(text: str) -> str:
         codes.append("<code>" + html.escape(m.group(1), quote=False) + "</code>")
         return f"\x00{len(codes) - 1}\x00"
 
+    def stash_math(m: re.Match) -> str:
+        codes.append(math_span(m.group(1) or m.group(2), display=m.group(1) is not None))
+        return f"\x00{len(codes) - 1}\x00"
+
     s = re.sub(r"`([^`]+)`", stash, text)
+    s = re.sub(r"\$\$(.+?)\$\$|(?<![\\$])\$(?=\S)([^$\n]+?)(?<=\S)\$(?!\d)", stash_math, s)
     s = html.escape(s, quote=False)
     s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
     s = re.sub(r"(?<![\w*])\*(?=[^\s*])([^*\n]+?)(?<=[^\s*])\*(?![\w*])", r"<em>\1</em>", s)
@@ -158,7 +171,7 @@ def _split_row(line: str) -> list[str]:
             current += "|"
             i += 2
             continue
-        if c == "`":
+        if c == "`" or (c == "$" and not in_tick and (i == 0 or line[i - 1] != "\\")):
             in_tick = not in_tick
         if c == "|" and not in_tick:
             cells.append(current.strip())
@@ -215,7 +228,13 @@ BOXES = {
     "warn": ("warn", "Important"),
     "example": ("example", "Example"),
     "summary": ("summary", "Quick Revision"),
+    "lecture": ("lecture", "Lecture"),
+    "slides": ("slides", "Slides"),
+    "compiler": ("compiler", "Compiler's Note"),
+    "scribe": ("scribe", "Worked Example"),
+    "code": ("codebox", "Notebook"),
 }
+CALLOUT = re.compile(r"^\[!(lecture|slides|compiler|scribe|code)\][ \t]*(.*)$")
 
 
 @dataclass
@@ -319,6 +338,19 @@ def render_blocks(lines: list[str], ctx: RenderContext) -> str:
             i += 1
             continue
 
+        if s.startswith("$$"):
+            flush()
+            buf, j = [s], i
+            while not (len(" ".join(buf)) >= 4 and " ".join(buf).endswith("$$")):
+                j += 1
+                if j >= n:
+                    raise ValueError(f"unclosed $$ near: {s[:70]!r}")
+                buf.append(lines[j].strip())
+            tex = " ".join(buf).strip()[2:-2]
+            out.append(math_span(tex, display=True))
+            i = j + 1
+            continue
+
         if s == "---":
             flush()
             out.append("<hr>")
@@ -329,9 +361,14 @@ def render_blocks(lines: list[str], ctx: RenderContext) -> str:
             flush()
             buf = []
             while i < n and lines[i].strip().startswith(">"):
-                buf.append(lines[i].strip()[1:].strip())
+                raw = lines[i].strip()[1:]
+                buf.append(raw[1:] if raw.startswith(" ") else raw)
                 i += 1
-            out.append("<blockquote>" + inline(" ".join(buf)) + "</blockquote>")
+            callout = CALLOUT.match(buf[0]) if buf else None
+            if callout:
+                out.append(_render_container(callout.group(1), callout.group(2).strip(), buf[1:], ctx))
+            else:
+                out.append("<blockquote>" + inline(" ".join(buf)) + "</blockquote>")
             continue
 
         if s.startswith("|"):

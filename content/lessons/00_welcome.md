@@ -1,17 +1,48 @@
-**This page is the first lesson of the sample course.** Delete or rewrite it once you've added your own content.
+**This course is about one question: how do we get from counting words to a model that can follow instructions, use tools and explain itself?** Every lesson answers one step of that path.
 
-## What you got
+## The Problem: Notes That List Without Teaching
 
-- A **Markdown to React** pipeline: write lessons in `content/lessons/*.md`, list them in `content/course.json`.
-- A left **course sidebar** (remembers its scroll position), a right **On this page** panel, dark mode, and a phone drawer.
-- A **validator** that runs every code example and checks the output shown on the page.
+Lecture slides give you formulas. Slides do not tell you why the formula had to be invented. Exams, however, ask the "why": why does self-attention need positional encoding, why does Kneser-Ney use continuation counts, why is the reward model trained on comparisons and not scores. If you only memorise the final formula, a differently phrased question defeats you.
 
-## Your next three steps
+> [!lecture] How the professor teaches
+> The course keeps one rhythm. We name what is broken. We show the cheapest fix. We show why the cheap fix fails. Only then do we give the real solution. The hope is that when you see the real solution, you already feel the need for it.
 
-1. Edit `content/site.json` (title, brand, storage prefix).
-2. Edit `content/course.json` to match your syllabus, one entry per lesson.
-3. Write the lessons. Open **Anatomy of a Lesson** next to see the format.
+## The Path in One Picture
+
+```text
+counts (N-grams)  ->  vectors (neural LMs)  ->  attention (Transformer)
+      -> pretraining (BERT, GPT, T5)  ->  instruction tuning + RLHF/DPO
+      -> cheap adaptation (LoRA, QLoRA)  ->  retrieval, tools, agents
+      -> multilingual / multimodal  ->  responsibility  ->  interpretability
+```
+
+:::analogy
+Think of learning to cook for a restaurant. First you count which dishes sell (N-grams). Then you learn what ingredients are similar (embeddings). Then you build a kitchen where every cook can see every order (attention). Then the kitchen is trained on a whole library of recipes (pretraining), taught to follow a customer's request (instruction tuning), and finally taught what customers actually enjoy (alignment).
+:::
+
+## How to Use the Lessons
+
+- Each lesson takes 4 to 10 minutes. Do one, then answer its Quick Check from memory.
+- A **practice set** follows every two or three chapters. Later sets mix earlier topics on purpose.
+- The final **Mock Paper** is timed and mixes every unit.
+- Run the code. Every example on this site was executed, and the output shown is the real output.
 
 :::key
-Every lesson file is plain Markdown. The only extras are the `:::box` blocks and the `<<SVG:name>>` diagram include. Both are shown in the next lesson.
+- Learn the problem before the formula.
+- Learn the failed attempts before the final answer.
+- Learn which statement is the exam trap: the course notes flag these explicitly.
+:::
+
+## Quick Check
+
+:::q Q1 · Why does the course teach a failed idea before the real one?
+:::ans
+Because each failure shows what the real solution must provide. For example, the positional-encoding lesson tries the raw index, then the normalised index, then binary numbers, and the sinusoid appears as the answer to the binary version's periodicity.
+:::
+:::
+
+:::q Q2 · What does a "Compiler's Note" box mean?
+:::ans
+It is a bridge, correction or cross-reference added by the course compiler. It is not the professor's own words. Corrections to the lecture always go in such a box.
+:::
 :::
