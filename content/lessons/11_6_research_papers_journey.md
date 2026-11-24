@@ -1,5 +1,7 @@
 **Research Papers Journey: From Conditional Computation to Agentic MoE** — the intellectual arc that connects every paper in your vault into one coherent story.
 
+<<SVG:research_papers_timeline>>
+
 ---
 
 ## 1. The Problem: Why Read Papers at All?
