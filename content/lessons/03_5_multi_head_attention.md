@@ -69,6 +69,8 @@ rows sum to 1: True
 - *"For $d_{\text{model}}=512$, $h=8$, what is $d_k$?"* 64.
 :::
 
+> **See it live.** Open an attention head and compare the 12 heads in the [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (GPT-2 small, runs in your browser). Full walkthrough in [Lesson 5.5](/05_5_decoder_only).
+
 ## Quick Check
 
 :::q Q1 · Why must $d_{\text{model}}$ be divisible by $h$?

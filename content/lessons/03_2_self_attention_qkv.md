@@ -69,6 +69,8 @@ each row of attention sums to 1: True
 - *"What is the time complexity of a self-attention layer?"* $O(n^2d)$.
 :::
 
+> **See it live.** Watch Q, K and V being computed for each token in the [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (GPT-2 small, runs in your browser). Full walkthrough in [Lesson 5.5](/05_5_decoder_only).
+
 ## Quick Check
 
 :::q Q1 · Are $W_Q$, $W_K$, $W_V$ shared across tokens? Across layers?

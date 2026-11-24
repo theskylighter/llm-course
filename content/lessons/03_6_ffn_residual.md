@@ -74,6 +74,8 @@ The **position-wise feed-forward network** is $\operatorname{FFN}(x)=\max(0,xW_1
 - *"Compute parameters of one encoder layer for $d=512$."* $12d^2=3{,}145{,}728$.
 :::
 
+> **See it live.** See the MLP block and the residual connection in the [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (GPT-2 small, runs in your browser). Full walkthrough in [Lesson 5.5](/05_5_decoder_only).
+
 ## Quick Check
 
 :::q Q1 · Why project up to $d_{ff}$ first and then down?

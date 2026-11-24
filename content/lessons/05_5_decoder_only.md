@@ -64,6 +64,15 @@ A **decoder-only language model** is a Transformer with causal self-attention tr
 - *"Why does a decoder-only model give a parallel training loss despite being autoregressive?"* (Tier 2) Causal mask and teacher forcing.
 :::
 
+## Watch One Forward Pass
+
+Everything in this lesson, and in Chapter 3, runs inside a GPT-2 small model that you can watch live in your browser: [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (Polo Club of Data Science, Georgia Tech). It opens in a new tab, and a laptop screen works better than a phone.
+
+What to try:
+1. Type a short sentence and follow one token through embedding, positional encoding, Q/K/V and the attention heads.
+2. Open a head and look at the attention matrix. The upper triangle is empty because of the causal mask.
+3. Raise the temperature and watch the next-token distribution flatten. Lower it and the top token takes over.
+
 ## Quick Check
 
 :::q Q1 · What does a decoder-only model predict at each position?
