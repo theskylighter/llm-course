@@ -222,6 +222,28 @@ async function desktop(browser) {
       .then(() => true, () => false);
     check("excalidraw: timeline scene finishes loading", loaded);
   }
+  const deepLesson = lessons.find((l) => l.html.includes('class="deep"'));
+  if (deepLesson) {
+    await page.goto(`${BASE}/${deepLesson.slug}`, { waitUntil: "networkidle" });
+    const closedOnLoad = await page.evaluate(() => document.querySelectorAll("details.deep[open]").length === 0);
+    check("deep dives: collapsed on load", closedOnLoad);
+    // Switch "Show answers" on here: answer blocks must open, deep dives must not.
+    const toggle = page.locator("button.btn-ghost", { hasText: /answers/i });
+    if (/show/i.test(await toggle.innerText())) await toggle.click();
+    const st = await page.evaluate(() => ({
+      deep: document.querySelectorAll("details.deep").length,
+      deepOpen: document.querySelectorAll("details.deep[open]").length,
+      ansOpen: document.querySelectorAll("details.ans[open]").length,
+      tocLeak: [...document.querySelectorAll(".toc-aside a")].some((a) => a.closest("details.deep") || document.querySelector(`details.deep [id="${(a.getAttribute("href") || "").slice(1)}"]`)),
+      firstId: document.querySelector("details.deep")?.id,
+    }));
+    check("deep dives: 'Show answers' opens answers but not deep dives", st.deep > 0 && st.ansOpen > 0 && st.deepOpen === 0, `${st.deepOpen}/${st.deep} deep dives open, ${st.ansOpen} answers open`);
+    await toggle.click(); // restore
+    check("deep dives: their headings stay out of 'On this page'", !st.tocLeak);
+    await page.goto(`${BASE}/${deepLesson.slug}#${st.firstId}`, { waitUntil: "networkidle" });
+    const opened = await page.evaluate((id) => document.getElementById(id)?.open === true, st.firstId);
+    check("deep dives: a #deep-... link opens its walkthrough", opened, st.firstId);
+  }
   await page.goto(`${BASE}/${rich.slug}.html`, { waitUntil: "networkidle" });
   check("routing: old .html URLs redirect to clean routes", page.url().endsWith(`/${rich.slug}`), page.url());
   await page.goto(`${BASE}/definitely-not-a-lesson`, { waitUntil: "networkidle" });

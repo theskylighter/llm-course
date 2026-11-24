@@ -277,6 +277,33 @@ details.ans summary:hover { color: var(--fg); border-color: color-mix(in srgb, v
 details.ans[open] summary { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); background: var(--accent-soft); }
 .ansbody { margin-top: 10px; padding: 4px 16px; border-left: 2px solid var(--c-key); background: color-mix(in srgb, var(--c-key) 5%, var(--bg)); border-radius: 0 var(--radius) var(--radius) 0; }
 
+/* ---------- per-paper deep dives (collapsible) ---------- */
+details.deep { margin: 12px 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); }
+details.deep + details.deep { margin-top: -4px; }
+details.deep summary {
+  display: flex; align-items: center; gap: 10px; padding: 11px 14px; list-style: none; cursor: pointer; user-select: none;
+  border-radius: var(--radius);
+}
+details.deep summary::-webkit-details-marker { display: none; }
+details.deep summary::before {
+  content: ""; width: 16px; height: 16px; flex: none; background-color: var(--accent);
+  -webkit-mask: url("./assets/icons/book-open.svg") center / contain no-repeat; mask: url("./assets/icons/book-open.svg") center / contain no-repeat;
+}
+details.deep summary::after { content: "▸"; margin-left: auto; color: var(--muted); font-size: 12px; transition: transform .15s; }
+details.deep[open] summary::after { transform: rotate(90deg); }
+details.deep summary:hover { background: var(--bg-subtle); }
+details.deep[open] summary { border-bottom: 1px solid var(--line); border-radius: var(--radius) var(--radius) 0 0; background: var(--accent-soft); }
+.deep-label { flex: none; white-space: nowrap; font-size: 11.5px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.deep-title { flex: 0 1 auto; min-width: 0; font-weight: 600; color: var(--fg); }
+.deep-meta { flex: none; white-space: nowrap; font-size: 13px; color: var(--muted); }
+.deepbody { padding: 4px 18px 10px; }
+.deepbody h4 { margin: 18px 0 6px; font-size: 15px; }
+@media (max-width: 600px) { /* phone: label, title and authors stack instead of overflowing */
+  details.deep summary { flex-wrap: wrap; row-gap: 2px; }
+  .deep-title { flex-basis: 100%; order: 1; }
+  .deep-meta { order: 2; white-space: normal; }
+}
+
 /* ---------- tables, diagrams ---------- */
 .tablewrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: var(--radius); }
 table { border-collapse: collapse; width: 100%; font-size: 14.5px; }

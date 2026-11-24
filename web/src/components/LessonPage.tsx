@@ -28,6 +28,15 @@ export function LessonPage() {
     if (!hash) window.scrollTo(0, 0);
   }, [pathname, hash]);
 
+  // A link to a deep dive (#deep-...) opens it, then scrolls to it.
+  useEffect(() => {
+    const target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
+    if (target instanceof HTMLDetailsElement) {
+      target.open = true;
+      target.scrollIntoView({ block: "start" });
+    }
+  }, [hash, slug]);
+
   // Open or close every answer block when the topbar toggle changes, and on each new lesson.
   useEffect(() => {
     bodyRef.current?.querySelectorAll<HTMLDetailsElement>("details.ans").forEach((d) => {

@@ -199,8 +199,10 @@ _LIST_ITEM = re.compile(r"^(\s*)([-*]|\d+\.)\s+(.*)$")
 
 def render_list(items: list[list]) -> str:
     def rec(idx: int, indent: int) -> tuple[str, int]:
-        tag = "ol" if items[idx][1] else "ul"
-        out = [f"<{tag}>"]
+        number = items[idx][1]  # the item's number for ordered lists, None for bullets
+        tag = "ul" if number is None else "ol"
+        # Honour the author's numbering, e.g. a list resumed after a display equation.
+        out = [f'<ol start="{number}">' if number not in (None, 1) else f"<{tag}>"]
         while idx < len(items) and items[idx][0] >= indent:
             item_indent, _ordered, text = items[idx]
             if item_indent > indent:
@@ -254,6 +256,15 @@ def _render_container(kind: str, title: str, inner: list[str], ctx: RenderContex
     if kind == "ans":
         label = inline(title) if title else "Show Answer"
         return f'<details class="ans"><summary>{label}</summary><div class="ansbody">{body}</div></details>'
+    if kind == "deep":
+        # Per-paper walkthrough: collapsed by default, independent of the "Show answers" toggle,
+        # and linkable (#deep-<title>) so other sections and the timeline can point at it.
+        name, _, meta = title.partition(" | ")
+        anchor = slugify("deep " + name.split(" — ")[0], ctx.used_ids)  # "BERT — ..." -> #deep-bert
+        meta_html = f'<span class="deep-meta">{inline(meta)}</span>' if meta else ""
+        return (f'<details class="deep" id="{anchor}"><summary><span class="deep-label">Deep dive</span>'
+                f'<span class="deep-title">{inline(name)}</span>{meta_html}</summary>'
+                f'<div class="deepbody">{body}</div></details>')
     css_class, default_title = BOXES.get(kind, ("note", kind))
     heading = inline(title) if title else default_title
     return f'<div class="box {css_class}"><div class="boxtitle">{heading}</div>{body}</div>'
@@ -386,7 +397,8 @@ def render_blocks(lines: list[str], ctx: RenderContext) -> str:
             while i < n:
                 mm = _LIST_ITEM.match(lines[i])
                 if mm:
-                    items.append([len(mm.group(1).expandtabs()), mm.group(2)[0].isdigit(), mm.group(3)])
+                    marker = mm.group(2)
+                    items.append([len(mm.group(1).expandtabs()), int(marker[:-1]) if marker[0].isdigit() else None, mm.group(3)])
                     i += 1
                 elif lines[i].strip() and lines[i].startswith("  ") and items:
                     items[-1][2] += " " + lines[i].strip()  # wrapped continuation line
