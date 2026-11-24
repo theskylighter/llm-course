@@ -329,31 +329,31 @@
 
 ## 15. The Papers in Your Vault — Quick Reference
 
-> [!slides] All 18 PDFs, in progression order
-> | # | Paper | Year | Vault Filename | Core Idea |
-> |---|-------|------|--------------|-----------|
-> | 1 | Adaptive MoE | 1991 | [AdaptiveMoE_Jacobs1991.pdf](/papers/AdaptiveMoE_Jacobs1991.pdf) | Experts + gate = conditional computation |
-> | 2 | MoE 2017 | 2017 | [MoE_1701.06538.pdf](/papers/MoE_1701.06538.pdf) | Sparsely-gated top-k MoE, >1000× capacity |
-> | 3 | ELMo | 2018 | [ELMo_1802.05365.pdf](/papers/ELMo_1802.05365.pdf) | Contextual vectors via biLSTM |
-> | 4 | GPT-1 | 2018 | [GPT-1_1806.01552.pdf](/papers/GPT-1_1806.01552.pdf) | Decoder-only, next-token LM |
-> | 5 | BERT | 2018 | [BERT_1810.04805.pdf](/papers/BERT_1810.04805.pdf) | Bidirectional encoder, MLM |
-> | 6 | T5 | 2019 | [T5_1910.10683.pdf](/papers/T5_1910.10683.pdf) | Text-to-text, span corruption |
-> | 7 | BART | 2019 | [BART_1910.13461.pdf](/papers/BART_1910.13461.pdf) | Denoising seq2seq |
-> | 8 | GPT-3 | 2020 | [GPT3_ICL_2005.14165.pdf](/papers/GPT3_ICL_2005.14165.pdf) | 175B, few-shot ICL |
-> | 9 | Position Survey | 2021 | [Position_Information_Transformers_2102.11090.pdf](/papers/Position_Information_Transformers_2102.11090.pdf) | Position encoding survey |
-> | 10 | RoPE | 2021 | [RoFormer_2104.09864.pdf](/papers/RoFormer_2104.09864.pdf) | Rotary Position Embedding |
-> | 11 | LoRA | 2021 | [LoRA_2106.09685.pdf](/papers/LoRA_2106.09685.pdf) | Low-rank adaptation ΔW=BA |
-> | 12 | InstructGPT | 2022 | [InstructGPT_2203.02155.pdf](/papers/InstructGPT_2203.02155.pdf) | RLHF = SFT → RM → PPO |
-> | 13 | PICL | 2023 | [PICL_2305.09137.pdf](/papers/PICL_2305.09137.pdf) | Intrinsic tasks + LM objective |
-> | 14 | DPO | 2023 | [DPO_2305.18290.pdf](/papers/DPO_2305.18290.pdf) | Offline preference optimization |
-> | 15 | GQA | 2023 | [GQA_2305.13245.pdf](/papers/GQA_2305.13245.pdf) | Grouped-query attention |
-> | 16 | IT Survey | 2023 | [IT_Survey_2308.10792.pdf](/papers/IT_Survey_2308.10792.pdf) | Complete IT landscape |
-> | 17 | SWAT | 2025 | [SlidingWindowAttention_2502.18845.pdf](/papers/SlidingWindowAttention_2502.18845.pdf) | Sigmoid + balanced ALiBi + RoPE |
-> | 18 | GLM-5 | 2026 | [GLM-5_2602.15763.pdf](/papers/GLM-5_2602.15763.pdf) | 744B MoE, DSA, async RL |
+> [!slides] All 18 papers, in progression order
+> | # | Paper | Year | Link | Core Idea |
+> |---|-------|------|------|-----------|
+> | 1 | Adaptive MoE | 1991 | [Adaptive MoE (Jacobs et al., 1991)](https://www.cs.toronto.edu/~hinton/absps/jjnh91.pdf) | Experts + gate = conditional computation |
+> | 2 | MoE 2017 | 2017 | [Sparsely-Gated MoE (Shazeer et al., 2017)](https://arxiv.org/abs/1701.06538) | Sparsely-gated top-k MoE, >1000× capacity |
+> | 3 | ELMo | 2018 | [ELMo (Peters et al., 2018)](https://arxiv.org/abs/1802.05365) | Contextual vectors via biLSTM |
+> | 4 | GPT-1 | 2018 | [GPT-1 (Radford et al., 2018)](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf) | Decoder-only, next-token LM |
+> | 5 | BERT | 2018 | [BERT (Devlin et al., 2018)](https://arxiv.org/abs/1810.04805) | Bidirectional encoder, MLM |
+> | 6 | T5 | 2019 | [T5 (Raffel et al., 2019)](https://arxiv.org/abs/1910.10683) | Text-to-text, span corruption |
+> | 7 | BART | 2019 | [BART (Lewis et al., 2019)](https://arxiv.org/abs/1910.13461) | Denoising seq2seq |
+> | 8 | GPT-3 | 2020 | [GPT-3 (Brown et al., 2020)](https://arxiv.org/abs/2005.14165) | 175B, few-shot ICL |
+> | 9 | Position Survey | 2021 | [Position Survey (Dufter et al., 2021)](https://arxiv.org/abs/2102.11090) | Position encoding survey |
+> | 10 | RoPE | 2021 | [RoFormer/RoPE (Su et al., 2021)](https://arxiv.org/abs/2104.09864) | Rotary Position Embedding |
+> | 11 | LoRA | 2021 | [LoRA (Hu et al., 2021)](https://arxiv.org/abs/2106.09685) | Low-rank adaptation ΔW=BA |
+> | 12 | InstructGPT | 2022 | [InstructGPT (Ouyang et al., 2022)](https://arxiv.org/abs/2203.02155) | RLHF = SFT → RM → PPO |
+> | 13 | PICL | 2023 | [PICL (Gu et al., 2023)](https://arxiv.org/abs/2305.09137) | Intrinsic tasks + LM objective |
+> | 14 | DPO | 2023 | [DPO (Rafailov et al., 2023)](https://arxiv.org/abs/2305.18290) | Offline preference optimization |
+> | 15 | GQA | 2023 | [GQA (Ainslie et al., 2023)](https://arxiv.org/abs/2305.13245) | Grouped-query attention |
+> | 16 | IT Survey | 2023 | [IT Survey (Zhang et al., 2023)](https://arxiv.org/abs/2308.10792) | Complete IT landscape |
+> | 17 | SWAT | 2025 | [SWAT (Fu et al., 2025)](https://arxiv.org/abs/2502.18845) | Sigmoid + balanced ALiBi + RoPE |
+> | 18 | GLM-5 | 2026 | [GLM-5 (Zhipu AI, 2026)](https://arxiv.org/abs/2602.15763) | 744B MoE, DSA, async RL |
 
 > [!compiler] Background papers (not in vault but essential)
-> - **Transformer** (Vaswani et al., 2017) — root architecture
-> - **FlashAttention** (Dao et al., 2022) — IO-aware exact attention
+> - **Transformer** (Vaswani et al., 2017) — root architecture — [https://arxiv.org/abs/1706.03762](https://arxiv.org/abs/1706.03762)
+> - **FlashAttention** (Dao et al., 2022) — IO-aware exact attention — [https://arxiv.org/abs/2205.14135](https://arxiv.org/abs/2205.14135)
 
 ---
 
