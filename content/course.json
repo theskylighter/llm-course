@@ -298,6 +298,11 @@
           "slug": "09_2_vit_clip",
           "title": "Vision Transformer and Multimodal Models",
           "syllabus": "Unit 7 \u00b7 Multilingual and Multimodal"
+        },
+        {
+          "slug": "09_3_vlm_vla",
+          "title": "Vision\u2013Language Models (VLMs) and Vision\u2013Language\u2013Action Models (VLAs)",
+          "syllabus": "Unit 7 \u00b7 Multilingual and Multimodal"
         }
       ]
     },
