@@ -244,6 +244,45 @@ async function desktop(browser) {
     const opened = await page.evaluate((id) => document.getElementById(id)?.open === true, st.firstId);
     check("deep dives: a #deep-... link opens its walkthrough", opened, st.firstId);
   }
+  // --- search (Ctrl/Cmd+K) ---
+  const heading = rich.toc[2];
+  const headingText = heading.html.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").trim();
+  await page.goto(`${BASE}/${other.slug}`, { waitUntil: "networkidle" });
+  await page.keyboard.press("Control+k");
+  check("search: Ctrl+K opens the search window with the box focused", await page.locator(".search-dialog").isVisible() && await page.evaluate(() => document.activeElement?.classList.contains("search-input")));
+  await page.keyboard.press("Escape");
+  check("search: Escape closes it", (await page.locator(".search-dialog").count()) === 0);
+  await page.keyboard.press("/");
+  check("search: '/' opens it too", await page.locator(".search-dialog").isVisible());
+  await page.fill(".search-input", headingText);
+  await page.locator(".search-hit").first().waitFor({ timeout: 8000 });
+  const titles = await page.locator(".search-hit-title").allInnerTexts();
+  check("search: a heading's text finds that section", titles.some((t) => t.replace(/\s+/g, " ").includes(headingText.replace(/\s+/g, " "))), `${titles.length} hits for "${headingText}"`);
+  check("search: matched words are highlighted", (await page.locator(".search-dialog mark").count()) > 0);
+  await page.fill(".search-input", headingText.slice(0, -1).replace(/(.)(.)$/, "$2$1")); // a typo near the end
+  await page.waitForTimeout(500);
+  check("search: tolerates a typo", (await page.locator(".search-hit").count()) > 0, headingText);
+  await page.fill(".search-input", "zzqxjvw");
+  await page.waitForTimeout(500);
+  check("search: no matches shows a message", (await page.locator(".search-hit").count()) === 0 && (await page.locator(".search-empty").innerText()).includes("No results"));
+  await page.fill(".search-input", headingText);
+  await page.waitForTimeout(500);
+  const wanted = page.locator(".search-hit", { has: page.locator(".search-hit-title", { hasText: headingText }) }).first();
+  await wanted.click();
+  await page.waitForURL(new RegExp(`/${rich.slug}#${heading.id}$`));
+  await page.waitForTimeout(600);
+  const landed = await page.evaluate((id) => ({ top: Math.round(document.getElementById(id)?.getBoundingClientRect().top ?? -999), dialog: !!document.querySelector(".search-dialog") }), heading.id);
+  check("search: choosing a result opens the lesson at that section, closes the window", landed.top >= 40 && landed.top <= 140 && !landed.dialog, JSON.stringify(landed));
+  const deepLessonData = lessons.find((l) => l.html.includes('class="deep"'));
+  if (deepLessonData) {
+    await page.keyboard.press("Control+k");
+    await page.fill(".search-input", "Deep dive");
+    await page.locator(".search-hit .search-hit-head svg").first().waitFor({ timeout: 8000 });
+    await page.keyboard.press("Enter");
+    await page.waitForURL(/#deep-/);
+    await page.waitForTimeout(500);
+    check("search: a deep-dive result opens that walkthrough", await page.evaluate(() => document.getElementById(location.hash.slice(1))?.open === true), "");
+  }
   await page.goto(`${BASE}/${rich.slug}.html`, { waitUntil: "networkidle" });
   check("routing: old .html URLs redirect to clean routes", page.url().endsWith(`/${rich.slug}`), page.url());
   await page.goto(`${BASE}/definitely-not-a-lesson`, { waitUntil: "networkidle" });
@@ -289,6 +328,18 @@ async function phone(browser) {
     await page.waitForURL(new RegExp(`/${other.slug}$`)); await settle(page, 400);
     check("phone: choosing a lesson navigates and closes the drawer", await hidden());
   }
+
+  // search is a full-screen sheet on phones
+  await page.goto(`${BASE}/${rich.slug}`, { waitUntil: "networkidle" });
+  const searchBtn = page.locator("button.search-btn");
+  const sb = await searchBtn.boundingBox();
+  check("phone: search button visible and >= 40px", !!sb && sb.width >= 40 && sb.height >= 40 && sb.x + sb.width <= vw, JSON.stringify(sb));
+  await searchBtn.tap();
+  await page.fill(".search-input", rich.title.split(/\s+/)[0]);
+  await page.locator(".search-hit").first().waitFor({ timeout: 8000 });
+  const sheet = await page.evaluate(() => { const r = document.querySelector(".search-dialog").getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height), vw: innerWidth, vh: innerHeight, over: document.documentElement.scrollWidth - document.documentElement.clientWidth }; });
+  check("phone: search opens as a full-screen sheet without sideways scroll", sheet.w === sheet.vw && sheet.h >= sheet.vh - 2 && sheet.over <= 1, JSON.stringify(sheet));
+  await page.keyboard.press("Escape");
 
   // every page must fit the screen width (no sideways scrolling)
   const bad = [];

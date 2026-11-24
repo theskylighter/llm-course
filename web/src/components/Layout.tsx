@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { Eye, EyeOff, GraduationCap, Menu, Moon, Sun } from "lucide-react";
+import { Eye, EyeOff, GraduationCap, Menu, Moon, Search, Sun } from "lucide-react";
 import { useDarkMode, useMediaQuery, useStoredBoolean } from "../hooks";
 import { course, findLesson, HOME_SLUG } from "../course";
 import { site, storageKey } from "../site";
+import { loadSearch } from "../search";
 import { ReadingProgress } from "./ReadingProgress";
+import { SearchDialog } from "./SearchDialog";
 import { Sidebar } from "./Sidebar";
 import { TocPanel } from "./TocPanel";
 
@@ -24,6 +26,8 @@ export function Layout() {
   const [leftCollapsed, toggleLeft] = useStoredBoolean(storageKey("left-collapsed"));
   const [rightCollapsed, toggleRight] = useStoredBoolean(storageKey("right-collapsed"));
   const { pathname } = useLocation();
+  const [searchOpen, setSearchOpen] = useState(false);
+  const closeSearch = useCallback(() => setSearchOpen(false), []);
 
   // On phones the course list is an off-canvas drawer instead of a docked panel.
   const isMobile = useMediaQuery("(max-width: 900px)");
@@ -65,6 +69,24 @@ export function Layout() {
     return () => window.removeEventListener("keydown", onKey);
   }, [toggleLeft, isMobile]);
 
+  // Ctrl/Cmd+K opens search from anywhere; "/" does too unless the reader is typing.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const el = e.target as HTMLElement | null;
+      const typing = !!el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName) || !!el.closest(".excalidraw"));
+      const cmdK = (e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey && e.key.toLowerCase() === "k";
+      const slash = e.key === "/" && !e.ctrlKey && !e.metaKey && !e.altKey && !typing;
+      if (cmdK || slash) {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+  // Navigating (e.g. choosing a result) always closes the window.
+  useEffect(() => closeSearch(), [pathname, closeSearch]);
+
   return (
     <>
       <header className="topbar">
@@ -89,6 +111,19 @@ export function Layout() {
         )}
         <span className="ptitle">{current ? current.title : ""}</span>
         <div className="topbar-actions">
+          <button
+            type="button"
+            className="btn-ghost search-btn"
+            onClick={() => setSearchOpen(true)}
+            onPointerEnter={() => void loadSearch()}
+            onFocus={() => void loadSearch()}
+            aria-label="Search"
+            aria-keyshortcuts="Control+K Meta+K"
+          >
+            <Search className="icon" size={16} aria-hidden="true" />
+            <span className="label">Search</span>
+            <kbd className="search-kbd">{/Mac|iPhone|iPad/.test(navigator.platform) ? "⌘K" : "Ctrl K"}</kbd>
+          </button>
           <button type="button" className="btn-ghost" onClick={toggleAnswers} aria-pressed={showAll}>
             {showAll ? (
               <EyeOff className="icon" size={16} aria-hidden="true" />
@@ -124,6 +159,7 @@ export function Layout() {
         </main>
         <TocPanel toc={toc} pageKey={slug} collapsed={rightCollapsed} onToggle={toggleRight} />
       </div>
+      <SearchDialog open={searchOpen} onClose={closeSearch} />
     </>
   );
 }

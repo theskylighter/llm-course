@@ -14,7 +14,7 @@ const PAGE_LINK = /^([\w-]+)\.html(#.*)?$/;
 export function LessonPage() {
   const { slug: rawSlug = "" } = useParams();
   const navigate = useNavigate();
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, key } = useLocation();
   const { showAll } = useOutletContext<LayoutContext>();
   const bodyRef = useRef<HTMLDivElement>(null);
 
@@ -28,14 +28,14 @@ export function LessonPage() {
     if (!hash) window.scrollTo(0, 0);
   }, [pathname, hash]);
 
-  // A link to a deep dive (#deep-...) opens it, then scrolls to it.
+  // A link to #something scrolls there; a deep dive (#deep-...) is opened first. `key` changes on
+  // every navigation, so choosing the same search result twice still scrolls back to it.
   useEffect(() => {
     const target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
-    if (target instanceof HTMLDetailsElement) {
-      target.open = true;
-      target.scrollIntoView({ block: "start" });
-    }
-  }, [hash, slug]);
+    if (!target) return;
+    if (target instanceof HTMLDetailsElement) target.open = true;
+    target.scrollIntoView({ block: "start" });
+  }, [hash, slug, key]);
 
   // Open or close every answer block when the topbar toggle changes, and on each new lesson.
   useEffect(() => {

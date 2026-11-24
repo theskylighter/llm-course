@@ -12,11 +12,13 @@ from . import config
 from .builder import INDEX_PLACEHOLDER, lesson_number, reading_minutes
 from .config import Course
 from .markdown import inline, render_markdown
+from .search_index import build_index
 
 INDEX_INTRO = "index"  # content/lessons/index.md is the home page
 
 
-def export(course: Course | None = None, out_file: Path = config.WEB_DATA_FILE) -> dict:
+def export(course: Course | None = None, out_file: Path = config.WEB_DATA_FILE,
+           search_file: Path = config.WEB_SEARCH_FILE) -> dict:
     course = course or config.load_course()
     lessons = []
     for lesson in course.lessons:
@@ -50,4 +52,5 @@ def export(course: Course | None = None, out_file: Path = config.WEB_DATA_FILE) 
     }
     out_file.parent.mkdir(parents=True, exist_ok=True)
     out_file.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+    search_file.write_text(json.dumps(build_index(lessons), ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return data

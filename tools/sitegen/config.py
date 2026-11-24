@@ -13,6 +13,7 @@ COURSE_FILE = CONTENT_DIR / "course.json"
 SITE_FILE = CONTENT_DIR / "site.json"
 WEB_DIR = ROOT / "web"
 WEB_DATA_FILE = WEB_DIR / "src" / "data" / "lessons.json"
+WEB_SEARCH_FILE = WEB_DIR / "src" / "data" / "search.json"
 DIST_DIR = WEB_DIR / "dist"
 CACHE_DIR = ROOT / ".cache"
 

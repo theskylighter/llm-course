@@ -10,6 +10,7 @@ web/node_modules/
 
 # Generated from content/ by tools/sitegen.py export
 web/src/data/lessons.json
+web/src/data/search.json
 
 # Python
 __pycache__/
