@@ -358,6 +358,11 @@
           "slug": "p6_mock_paper",
           "title": "Mock Paper",
           "syllabus": "Practice"
+        },
+        {
+          "slug": "11_6_research_papers_journey",
+          "title": "Research Papers Journey: From Conditional Computation to Agentic MoE",
+          "syllabus": "Unit 9 \u00b7 Advanced Topics"
         }
       ]
     }
