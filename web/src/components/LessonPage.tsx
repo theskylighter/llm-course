@@ -110,7 +110,7 @@ export function LessonPage() {
           <BookMarked className="icon" size={15} aria-hidden="true" /> Syllabus: {lesson.syllabus}
         </span>
       </div>
-      {isResearchPapersJourney && <ExcalidrawTimeline height={650} />}
+      {isResearchPapersJourney && <ExcalidrawTimeline />}
       <div ref={bodyRef} onClick={onBodyClick} dangerouslySetInnerHTML={{ __html: lesson.html }} />
       <nav className="pager" aria-label="Lesson navigation">
         {prev ? (

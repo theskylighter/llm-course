@@ -215,6 +215,13 @@ async function desktop(browser) {
     const [btns, blocks] = await page.evaluate(() => [document.querySelectorAll(".codewrap:not(.output):not(.text):not(.uml) .copybtn").length, document.querySelectorAll(".codewrap:not(.output):not(.text):not(.uml)").length]);
     if (blocks > 0) check("code: copy button on each code block", btns === blocks, `${btns}/${blocks}`);
   }
+  if (lessons.some((l) => l.slug === "11_6_research_papers_journey")) {
+    await page.goto(`${BASE}/11_6_research_papers_journey`, { waitUntil: "networkidle" });
+    const loaded = await page
+      .waitForFunction(() => document.querySelector(".excalidraw canvas") && !document.querySelector(".excalidraw .LoadingMessage"), null, { timeout: 10000 })
+      .then(() => true, () => false);
+    check("excalidraw: timeline scene finishes loading", loaded);
+  }
   await page.goto(`${BASE}/${rich.slug}.html`, { waitUntil: "networkidle" });
   check("routing: old .html URLs redirect to clean routes", page.url().endsWith(`/${rich.slug}`), page.url());
   await page.goto(`${BASE}/definitely-not-a-lesson`, { waitUntil: "networkidle" });
