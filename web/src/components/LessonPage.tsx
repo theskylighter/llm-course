@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, BookMarked, Clock } from "lucide-react";
 import { findLesson, HOME_SLUG, lessonOrder, lessonPath } from "../course";
 import type { LayoutContext } from "./Layout";
 import { NotFound } from "./NotFound";
+import { ExcalidrawTimeline } from "./ExcalidrawTimeline";
 
 /** Matches links to lesson pages inside lesson HTML, e.g. "08_1_association.html#sec". */
 const PAGE_LINK = /^([\w-]+)\.html(#.*)?$/;
@@ -91,6 +92,9 @@ export function LessonPage() {
   const prev = index > 0 ? findLesson(lessonOrder[index - 1]) : undefined;
   const next = index < lessonOrder.length - 1 ? findLesson(lessonOrder[index + 1]) : undefined;
 
+  // Check if this is the Research Papers Journey lesson to render interactive timeline
+  const isResearchPapersJourney = slug === "11_6_research_papers_journey";
+
   return (
     <article className="lesson">
       <div className="crumb">
@@ -106,6 +110,7 @@ export function LessonPage() {
           <BookMarked className="icon" size={15} aria-hidden="true" /> Syllabus: {lesson.syllabus}
         </span>
       </div>
+      {isResearchPapersJourney && <ExcalidrawTimeline height={650} />}
       <div ref={bodyRef} onClick={onBodyClick} dangerouslySetInnerHTML={{ __html: lesson.html }} />
       <nav className="pager" aria-label="Lesson navigation">
         {prev ? (
