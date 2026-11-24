@@ -322,16 +322,6 @@
       ]
     },
     {
-      "title": "Research Papers Journey",
-      "lessons": [
-        {
-          "slug": "11_6_research_papers_journey",
-          "title": "Research Papers Journey: From Conditional Computation to Agentic MoE",
-          "syllabus": "Research Papers Journey"
-        }
-      ]
-    },
-    {
       "title": "Chapter 11 \u00b7 Advanced Topics",
       "lessons": [
         {
@@ -368,6 +358,16 @@
           "slug": "p6_mock_paper",
           "title": "Mock Paper",
           "syllabus": "Practice"
+        }
+      ]
+    },
+    {
+      "title": "Research Papers Journey",
+      "lessons": [
+        {
+          "slug": "11_6_research_papers_journey",
+          "title": "Research Papers Journey: From Conditional Computation to Agentic MoE",
+          "syllabus": "Research Papers Journey"
         }
       ]
     }

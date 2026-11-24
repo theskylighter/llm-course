@@ -46,7 +46,7 @@
 > ```
 
 > [!compiler] Not in vault but essential
-> The Transformer paper is **not in your vault PDFs** — but every other paper in your vault either cites it or builds on it. We treat it as the **root node** of the progression graph. Its mechanics are Ch. 3, Lessons 3.1–3.10.
+> The Transformer paper is **not in your vault PDFs** — but every other paper in your vault either cites it or builds on it. We treat it as the **root node** of the progression graph. Its mechanics are Ch. 3, Lessons [3.1](03_1_why_remove_recurrence.html)–[3.10](03_10_rope.html).
 
 ---
 
@@ -79,10 +79,10 @@
 > | **Weakness** | Not a natural free-text generator | Cannot see future context |
 
 > [!compiler] Course connection
-> - **Ch. 5, Lesson 5.1**: ELMo — contextual embeddings
-> - **Ch. 5, Lessons 5.2–5.3**: BERT's MLM objective, [CLS] token, fine-tuning heads
-> - **Ch. 5, Lesson 5.5**: Decoder-only models — GPT training, causal mask, next-token prediction
-> - **Ch. 3, Lesson 3.9**: Transformer training — teacher forcing
+> - **Ch. 5, [Lesson 5.1](05_1_elmo.html)**: ELMo — contextual embeddings
+> - **Ch. 5, Lessons [5.2](05_2_bert_mlm.html)–[5.3](05_3_bert_cls_qa.html)**: BERT's MLM objective, [CLS] token, fine-tuning heads
+> - **Ch. 5, [Lesson 5.5](05_5_decoder_only.html)**: Decoder-only models — GPT training, causal mask, next-token prediction
+> - **Ch. 3, [Lesson 3.9](03_9_transformer_training.html)**: Transformer training — teacher forcing
 
 ---
 
@@ -101,8 +101,8 @@
 > T5 and BART are **peers**, not competitors. T5's span corruption is simple and scales; BART's denoising (token masking, deletion, infilling, sentence permutation, document rotation) is richer. **T5's "text-to-text" framing** is the mental model behind instruction tuning (Ch. 6) and prompting (Ch. 6).
 
 > [!slides] Course connections
-> - **Ch. 5, Lesson 5.4**: BART vs. T5 — span corruption vs. denoising, sentinel tokens
-> - **Ch. 5, Lesson 5.5**: Decoder-only line (GPT) — why decoders won for generation
+> - **Ch. 5, [Lesson 5.4](05_4_bart_t5.html)**: BART vs. T5 — span corruption vs. denoising, sentinel tokens
+> - **Ch. 5, [Lesson 5.5](05_5_decoder_only.html)**: Decoder-only line (GPT) — why decoders won for generation
 
 ---
 
@@ -124,12 +124,12 @@
 > - *Metric-artifact view* (Schaeffer et al., 2023): apparent "jumps" come from non-linear or discontinuous metrics such as exact match; smooth metrics show gradual improvement.
 > - *Data view*: ICL may depend on what is in the training distribution (diverse, task-like text) — which is exactly what PICL (Section 10) exploits.
 >
-> **The honest answer**: scale, data, training distribution and metric choice all interact. **Ch. 5, Lesson 5.6** covers scaling laws and the emergence discussion.
+> **The honest answer**: scale, data, training distribution and metric choice all interact. **Ch. 5, [Lesson 5.6](05_6_scaling_laws.html)** covers scaling laws and the emergence discussion.
 
 > [!compiler] Course connections
-> - **Ch. 5, Lesson 5.5**: GPT-3, few-shot ICL, the decoder-only line
-> - **Ch. 6, Lesson 6.3**: Prompting and chain-of-thought
-> - **Ch. 11, Lesson 11.1**: Reasoning — CoT, self-consistency, ToT, GoT, PAL
+> - **Ch. 5, [Lesson 5.5](05_5_decoder_only.html)**: GPT-3, few-shot ICL, the decoder-only line
+> - **Ch. 6, [Lesson 6.3](06_3_prompting_cot.html)**: Prompting and chain-of-thought
+> - **Ch. 11, [Lesson 11.1](11_1_reasoning.html)**: Reasoning — CoT, self-consistency, ToT, GoT, PAL
 
 ---
 
@@ -153,9 +153,9 @@
 > RoPE (Rotary Position Embedding) treats pairs of Q and K dimensions as complex numbers and **rotates them by position-dependent angles**. The dot product then depends *only on the relative position* (m−n). No absolute position table is needed, and it is now a standard choice in modern open LLMs. The **Position Survey** (Dufter et al., 2021) is the map of this whole design space.
 
 > [!slides] Course connections
-> - **Ch. 3, Lesson 3.4**: Positional encoding — absolute vs. relative trade-offs
-> - **Ch. 3, Lesson 3.10**: RoPE derivation — rotation matrices, relative position, complex numbers
-> - **Ch. 11, Lesson 11.2**: Long context — ALiBi, Position Interpolation, YaRN, Ring Attention
+> - **Ch. 3, [Lesson 3.4](03_4_positional_encoding.html)**: Positional encoding — absolute vs. relative trade-offs
+> - **Ch. 3, [Lesson 3.10](03_10_rope.html)**: RoPE derivation — rotation matrices, relative position, complex numbers
+> - **Ch. 11, [Lesson 11.2](11_2_long_context.html)**: Long context — ALiBi, Position Interpolation, YaRN, Ring Attention
 
 ---
 
@@ -175,11 +175,11 @@
 > Attention is largely **memory-bound**, not compute-bound. FlashAttention (Dao et al., 2022) tiles Q, K, V to fit in **on-chip SRAM**, uses **online softmax** (running max + sum), and recomputes in the backward pass. **Exact same output, far fewer HBM reads/writes, memory linear in sequence length.**
 
 > [!compiler] Course connections
-> - **Ch. 7, Lesson 7.2**: LoRA, adapters — init (B=0), merge() with zero added latency
-> - **Ch. 7, Lesson 7.1**: Soft prompts and prefix tuning
-> - **Ch. 7, Lesson 7.3**: Quantization (INT8, NF4, GPTQ, AWQ)
-> - **Ch. 7, Lesson 7.4**: QLoRA — 4-bit NF4 + double quantization + paged optimizers
-> - **Ch. 4, Lesson 4.4**: FlashAttention — tiling, online softmax derivation, backward recomputation
+> - **Ch. 7, [Lesson 7.2](07_2_adapters_lora.html)**: LoRA, adapters — init (B=0), merge() with zero added latency
+> - **Ch. 7, [Lesson 7.1](07_1_soft_prefix_tuning.html)**: Soft prompts and prefix tuning
+> - **Ch. 7, [Lesson 7.3](07_3_quantization.html)**: Quantization (INT8, NF4, GPTQ, AWQ)
+> - **Ch. 7, [Lesson 7.4](07_4_qlora_prune_distill.html)**: QLoRA — 4-bit NF4 + double quantization + paged optimizers
+> - **Ch. 4, [Lesson 4.4](04_4_flash_attention.html)**: FlashAttention — tiling, online softmax derivation, backward recomputation
 
 ---
 
@@ -202,11 +202,11 @@
 > DPO (Rafailov et al., 2023) optimizes the **same KL-regularized objective** in closed form. The optimal policy is π*(y|x) ∝ π_ref(y|x) exp(r(x,y)/β). Plug it into Bradley-Terry and the intractable partition function **cancels**. DPO trains **offline on preference pairs** with an implicit reward — no separate reward model, no PPO loop, no sampling during training.
 
 > [!slides] Course connections
-> - **Ch. 6, Lesson 6.1**: Instruction tuning (SFT)
-> - **Ch. 6, Lesson 6.4**: Reward models, Bradley-Terry, log-sigmoid loss
-> - **Ch. 6, Lesson 6.5**: PPO loop — REINFORCE, advantage, PPO-Clip
-> - **Ch. 6, Lesson 6.6**: DPO derivation, implicit reward, DPO vs PPO (models in memory, reward model, KL term)
-> - **Ch. 7, Lesson 7.2**: LoRA, which makes alignment cheap (LoRA + DPO)
+> - **Ch. 6, [Lesson 6.1](06_1_instruction_tuning.html)**: Instruction tuning (SFT)
+> - **Ch. 6, [Lesson 6.4](06_4_reward_model.html)**: Reward models, Bradley-Terry, log-sigmoid loss
+> - **Ch. 6, [Lesson 6.5](06_5_rlhf_ppo.html)**: PPO loop — REINFORCE, advantage, PPO-Clip
+> - **Ch. 6, [Lesson 6.6](06_6_dpo.html)**: DPO derivation, implicit reward, DPO vs PPO (models in memory, reward model, KL term)
+> - **Ch. 7, [Lesson 7.2](07_2_adapters_lora.html)**: LoRA, which makes alignment cheap (LoRA + DPO)
 
 ---
 
@@ -222,8 +222,8 @@
 > ICL requires the model to *recognise a task from examples and apply it*. If every training instance is "several demonstrations of one task, then another instance," then next-token prediction **forces** the model to infer the task from context. The paper reports that PICL beats several baselines and can outperform models with nearly 4× the parameters on its evaluations.
 
 > [!slides] Course connections
-> - **Ch. 5, Lesson 5.5**: GPT-3 and few-shot ICL — the behaviour PICL tries to train explicitly
-> - **Ch. 6, Lesson 6.3**: Prompting — how ICL is used in practice
+> - **Ch. 5, [Lesson 5.5](05_5_decoder_only.html)**: GPT-3 and few-shot ICL — the behaviour PICL tries to train explicitly
+> - **Ch. 6, [Lesson 6.3](06_3_prompting_cot.html)**: Prompting — how ICL is used in practice
 
 ---
 
@@ -242,9 +242,9 @@
 > - **QLoRA** (Dettmers et al.): 4-bit NF4 + double quantization + paged optimizers = fine-tune a 65B model on a single 48GB GPU
 
 > [!slides] Course connections
-> - **Ch. 6, Lesson 6.2**: Self-Instruct, Evol-Instruct, LIMA
-> - **Ch. 6, Lesson 6.3**: POSIX sensitivity metric (prompt robustness)
-> - **Ch. 7, Lesson 7.4**: QLoRA — NF4, double quantization, paged optimizers; distillation (word-level vs sequence-level)
+> - **Ch. 6, [Lesson 6.2](06_2_synthetic_instructions.html)**: Self-Instruct, Evol-Instruct, LIMA
+> - **Ch. 6, [Lesson 6.3](06_3_prompting_cot.html)**: POSIX sensitivity metric (prompt robustness)
+> - **Ch. 7, [Lesson 7.4](07_4_qlora_prune_distill.html)**: QLoRA — NF4, double quantization, paged optimizers; distillation (word-level vs sequence-level)
 
 ---
 
@@ -269,10 +269,10 @@
 > - **Agentic engineering** focus — long-horizon, real-world software engineering tasks
 
 > [!slides] Course connections
-> - **Ch. 4, Lesson 4.1**: KV cache — matmul counting, cache size arithmetic
-> - **Ch. 4, Lesson 4.2**: MQA/GQA — parameter counting and cache size
-> - **Ch. 4, Lesson 4.3**: Sliding window attention and SWAT
-> - **Ch. 4, Lesson 4.4**: FlashAttention — online softmax, backward recomputation
+> - **Ch. 4, [Lesson 4.1](04_1_kv_cache.html)**: KV cache — matmul counting, cache size arithmetic
+> - **Ch. 4, [Lesson 4.2](04_2_mqa_gqa.html)**: MQA/GQA — parameter counting and cache size
+> - **Ch. 4, [Lesson 4.3](04_3_sliding_window.html)**: Sliding window attention and SWAT
+> - **Ch. 4, [Lesson 4.4](04_4_flash_attention.html)**: FlashAttention — online softmax, backward recomputation
 
 ---
 
@@ -305,23 +305,25 @@
 
 ## 14. How to Use This Map for Exams
 
-> [!exam] The exam cheat codes
-> | If asked... | Answer with this paper + one sentence |
-> |-------------|----------------------------------------|
-> | "How did we get contextual embeddings?" | **ELMo** — biLSTM layer-weighted sum, not static |
-> | "What's the difference between BERT and GPT?" | BERT = bidirectional encoder (MLM); GPT = decoder-only (next-token) |
-> | "What is MoE and why does it scale?" | **MoE 2017** — sparse gating activates only top-k experts per example |
-> | "Where did conditional computation start?" | **Adaptive MoE 1991** — Jacobs/Jordan/Nowlan/Hinton, experts + gate |
-> | "How does RoPE encode position?" | **RoFormer** — rotates Q/K vectors; dot product depends on relative distance |
-> | "What is ICL and where did it come from?" | **GPT-3** — 175B params, few-shot prompting; **PICL** trains it explicitly via intrinsic tasks |
-> | "How do you make a chat model from base LLM?" | **InstructGPT** — SFT on (instruction, output) → Reward Model → PPO |
-> | "What are the 3 ways to get instruction data?" | **IT Survey** — human-crafted, distilled from stronger LLMs, preference data |
-> | "How to fine-tune 65B on one GPU?" | **QLoRA** (IT Survey) — 4-bit NF4 + LoRA adapters |
-> | "Does IT teach understanding or format?" | **LIMA / IT Survey** — largely style/format, limited new knowledge |
-> | "What does GQA change?" | **GQA** — query-head groups share one K/V head; smaller KV cache |
-> | "How to make sliding-window attention trainable?" | **SWAT** — sigmoid instead of softmax + balanced ALiBi + RoPE |
-> | "What is GLM-5?" | 744B MoE (40B active), DSA sparse attention, async RL, agentic engineering |
-> | "How does DPO avoid RL?" | Implicit reward = β log(π_θ/π_ref); partition function cancels in BT |
+:::exam The exam cheat codes
+| If asked... | Answer with this paper + one sentence |
+|-------------|----------------------------------------|
+| "How did we get contextual embeddings?" | **ELMo** — biLSTM layer-weighted sum, not static |
+| "What's the difference between BERT and GPT?" | BERT = bidirectional encoder (MLM); GPT = decoder-only (next-token) |
+| "What is MoE and why does it scale?" | **MoE 2017** — sparse gating activates only top-k experts per example |
+| "Where did conditional computation start?" | **Adaptive MoE 1991** — Jacobs/Jordan/Nowlan/Hinton, experts + gate |
+| "How does RoPE encode position?" | **RoFormer** — rotates Q/K vectors; dot product depends on relative distance |
+| "What is ICL and where did it come from?" | **GPT-3** — 175B params, few-shot prompting; **PICL** trains it explicitly via intrinsic tasks |
+| "How do you make a chat model from base LLM?" | **InstructGPT** — SFT on (instruction, output) → Reward Model → PPO |
+| "What are the 3 ways to get instruction data?" | **IT Survey** — human-crafted, distilled from stronger LLMs, preference data |
+| "How to fine-tune 65B on one GPU?" | **QLoRA** (IT Survey) — 4-bit NF4 + LoRA adapters |
+| "Does IT teach understanding or format?" | **LIMA / IT Survey** — largely style/format, limited new knowledge |
+| "What does GQA change?" | **GQA** — query-head groups share one K/V head; smaller KV cache |
+| "How to make sliding-window attention trainable?" | **SWAT** — sigmoid instead of softmax + balanced ALiBi + RoPE |
+| "What is GLM-5?" | 744B MoE (40B active), DSA sparse attention, async RL, agentic engineering |
+| "How does DPO avoid RL?" | Implicit reward = β log(π_θ/π_ref); partition function cancels in BT |
+
+:::
 
 ---
 
@@ -330,24 +332,24 @@
 > [!slides] All 18 PDFs, in progression order
 > | # | Paper | Year | Vault Filename | Core Idea |
 > |---|-------|------|--------------|-----------|
-> | 1 | Adaptive MoE | 1991 | `AdaptiveMoE_Jacobs1991.pdf` | Experts + gate = conditional computation |
-> | 2 | MoE 2017 | 2017 | `MoE_1701.06538.pdf` | Sparsely-gated top-k MoE, >1000× capacity |
-> | 3 | ELMo | 2018 | `ELMo_1802.05365.pdf` | Contextual vectors via biLSTM |
-> | 4 | GPT-1 | 2018 | `GPT-1_1806.01552.pdf` | Decoder-only, next-token LM |
-> | 5 | BERT | 2018 | `BERT_1810.04805.pdf` | Bidirectional encoder, MLM |
-> | 6 | T5 | 2019 | `T5_1910.10683.pdf` | Text-to-text, span corruption |
-> | 7 | BART | 2019 | `BART_1910.13461.pdf` | Denoising seq2seq |
-> | 8 | GPT-3 | 2020 | `GPT3_ICL_2005.14165.pdf` | 175B, few-shot ICL |
-> | 9 | Position Survey | 2021 | `Position_Information_Transformers_2102.11090.pdf` | Position encoding survey |
-> | 10 | RoPE | 2021 | `RoFormer_2104.09864.pdf` | Rotary Position Embedding |
-> | 11 | LoRA | 2021 | `LoRA_2106.09685.pdf` | Low-rank adaptation ΔW=BA |
-> | 12 | InstructGPT | 2022 | `InstructGPT_2203.02155.pdf` | RLHF = SFT → RM → PPO |
-> | 13 | PICL | 2023 | `PICL_2305.09137.pdf` | Intrinsic tasks + LM objective |
-> | 14 | DPO | 2023 | `DPO_2305.18290.pdf` | Offline preference optimization |
-> | 15 | GQA | 2023 | `GQA_2305.13245.pdf` | Grouped-query attention |
-> | 16 | IT Survey | 2023 | `IT_Survey_2308.10792.pdf` | Complete IT landscape |
-> | 17 | SWAT | 2025 | `SlidingWindowAttention_2502.18845.pdf` | Sigmoid + balanced ALiBi + RoPE |
-> | 18 | GLM-5 | 2026 | `GLM-5_2602.15763.pdf` | 744B MoE, DSA, async RL |
+> | 1 | Adaptive MoE | 1991 | [AdaptiveMoE_Jacobs1991.pdf](/papers/AdaptiveMoE_Jacobs1991.pdf) | Experts + gate = conditional computation |
+> | 2 | MoE 2017 | 2017 | [MoE_1701.06538.pdf](/papers/MoE_1701.06538.pdf) | Sparsely-gated top-k MoE, >1000× capacity |
+> | 3 | ELMo | 2018 | [ELMo_1802.05365.pdf](/papers/ELMo_1802.05365.pdf) | Contextual vectors via biLSTM |
+> | 4 | GPT-1 | 2018 | [GPT-1_1806.01552.pdf](/papers/GPT-1_1806.01552.pdf) | Decoder-only, next-token LM |
+> | 5 | BERT | 2018 | [BERT_1810.04805.pdf](/papers/BERT_1810.04805.pdf) | Bidirectional encoder, MLM |
+> | 6 | T5 | 2019 | [T5_1910.10683.pdf](/papers/T5_1910.10683.pdf) | Text-to-text, span corruption |
+> | 7 | BART | 2019 | [BART_1910.13461.pdf](/papers/BART_1910.13461.pdf) | Denoising seq2seq |
+> | 8 | GPT-3 | 2020 | [GPT3_ICL_2005.14165.pdf](/papers/GPT3_ICL_2005.14165.pdf) | 175B, few-shot ICL |
+> | 9 | Position Survey | 2021 | [Position_Information_Transformers_2102.11090.pdf](/papers/Position_Information_Transformers_2102.11090.pdf) | Position encoding survey |
+> | 10 | RoPE | 2021 | [RoFormer_2104.09864.pdf](/papers/RoFormer_2104.09864.pdf) | Rotary Position Embedding |
+> | 11 | LoRA | 2021 | [LoRA_2106.09685.pdf](/papers/LoRA_2106.09685.pdf) | Low-rank adaptation ΔW=BA |
+> | 12 | InstructGPT | 2022 | [InstructGPT_2203.02155.pdf](/papers/InstructGPT_2203.02155.pdf) | RLHF = SFT → RM → PPO |
+> | 13 | PICL | 2023 | [PICL_2305.09137.pdf](/papers/PICL_2305.09137.pdf) | Intrinsic tasks + LM objective |
+> | 14 | DPO | 2023 | [DPO_2305.18290.pdf](/papers/DPO_2305.18290.pdf) | Offline preference optimization |
+> | 15 | GQA | 2023 | [GQA_2305.13245.pdf](/papers/GQA_2305.13245.pdf) | Grouped-query attention |
+> | 16 | IT Survey | 2023 | [IT_Survey_2308.10792.pdf](/papers/IT_Survey_2308.10792.pdf) | Complete IT landscape |
+> | 17 | SWAT | 2025 | [SlidingWindowAttention_2502.18845.pdf](/papers/SlidingWindowAttention_2502.18845.pdf) | Sigmoid + balanced ALiBi + RoPE |
+> | 18 | GLM-5 | 2026 | [GLM-5_2602.15763.pdf](/papers/GLM-5_2602.15763.pdf) | 744B MoE, DSA, async RL |
 
 > [!compiler] Background papers (not in vault but essential)
 > - **Transformer** (Vaswani et al., 2017) — root architecture
@@ -357,44 +359,48 @@
 
 ## 16. Suggested Reading Order for Your Exam
 
-> [!tip] Optimal path through the papers
-> 1. **ELMo → BERT → GPT-1** (representation & pre-training paradigms)
-> 2. **T5 → BART** (unified objectives, encoder-decoder)
-> 3. **Adaptive MoE 1991 → MoE 2017** (efficiency lineage)
-> 4. **GPT-3 → PICL** (ICL: shown at scale → trained explicitly)
-> 5. **Position Survey → RoPE** (how Transformers know position)
-> 6. **InstructGPT → DPO → IT Survey** (alignment & IT ecosystem)
-> 7. **LoRA → GQA → SWAT** (efficiency stack; QLoRA and FlashAttention come via the IT Survey and Ch. 4)
-> 8. **GLM-5** (modern synthesis: MoE + sparse attention + async RL)
+:::tip Optimal path through the papers
+1. **ELMo → BERT → GPT-1** (representation & pre-training paradigms)
+2. **T5 → BART** (unified objectives, encoder-decoder)
+3. **Adaptive MoE 1991 → MoE 2017** (efficiency lineage)
+4. **GPT-3 → PICL** (ICL: shown at scale → trained explicitly)
+5. **Position Survey → RoPE** (how Transformers know position)
+6. **InstructGPT → DPO → IT Survey** (alignment & IT ecosystem)
+7. **LoRA → GQA → SWAT** (efficiency stack; QLoRA and FlashAttention come via the IT Survey and Ch. 4)
+8. **GLM-5** (modern synthesis: MoE + sparse attention + async RL)
+
+:::
 
 ---
 
 ## 17. Quick Navigation: Link to Course Lessons
 
-> [!note] Jump to any topic in the course
-> | Topic | Chapter & Lesson |
-> |-------|------------------|
-> | **Transformer architecture** | Ch. 3, Lessons 3.1–3.10 |
-> | **Positional encoding** | Ch. 3, Lesson 3.4 |
-> | **RoPE derivation** | Ch. 3, Lesson 3.10 |
-> | **KV cache, MQA, GQA** | Ch. 4, Lessons 4.1–4.2 |
-> | **SWAT, sliding window** | Ch. 4, Lesson 4.3 |
-> | **FlashAttention, online softmax** | Ch. 4, Lesson 4.4 |
-> | **ELMo, BERT MLM, [CLS], QA** | Ch. 5, Lessons 5.1–5.3 |
-> | **BART, T5** | Ch. 5, Lesson 5.4 |
-> | **GPT training, decoder-only, ICL** | Ch. 5, Lesson 5.5 |
-> | **Scaling laws, emergence** | Ch. 5, Lesson 5.6 |
-> | **Instruction tuning, FLAN, Self-Instruct, LIMA** | Ch. 6, Lessons 6.1–6.2 |
-> | **Prompting, chain-of-thought, POSIX sensitivity** | Ch. 6, Lesson 6.3 |
-> | **RLHF, PPO, DPO** | Ch. 6, Lessons 6.4–6.6 |
-> | **Soft prompts, prefix tuning** | Ch. 7, Lesson 7.1 |
-> | **Adapters, LoRA** | Ch. 7, Lesson 7.2 |
-> | **Quantization** | Ch. 7, Lesson 7.3 |
-> | **QLoRA, pruning, distillation** | Ch. 7, Lesson 7.4 |
-> | **RAG, tools, agents, knowledge graphs** | Ch. 8, Lessons 8.1–8.3 |
-> | **Multilingual, ViT, CLIP, VLM/VLA** | Ch. 9, Lessons 9.1–9.3 |
-> | **Bias, toxicity, hallucination** | Ch. 10, Lessons 10.1–10.2 |
-> | **Reasoning, long context, model editing (ROME, MEMIT), self-evolution, interpretability** | Ch. 11, Lessons 11.1–11.5 |
+:::note Jump to any topic in the course
+| Topic | Chapter & Lesson |
+|-------|------------------|
+| **Transformer architecture** | Ch. 3, Lessons [3.1](03_1_why_remove_recurrence.html)–[3.10](03_10_rope.html) |
+| **Positional encoding** | Ch. 3, [Lesson 3.4](03_4_positional_encoding.html) |
+| **RoPE derivation** | Ch. 3, [Lesson 3.10](03_10_rope.html) |
+| **KV cache, MQA, GQA** | Ch. 4, Lessons [4.1](04_1_kv_cache.html)–[4.2](04_2_mqa_gqa.html) |
+| **SWAT, sliding window** | Ch. 4, [Lesson 4.3](04_3_sliding_window.html) |
+| **FlashAttention, online softmax** | Ch. 4, [Lesson 4.4](04_4_flash_attention.html) |
+| **ELMo, BERT MLM, [CLS], QA** | Ch. 5, Lessons [5.1](05_1_elmo.html)–[5.3](05_3_bert_cls_qa.html) |
+| **BART, T5** | Ch. 5, [Lesson 5.4](05_4_bart_t5.html) |
+| **GPT training, decoder-only, ICL** | Ch. 5, [Lesson 5.5](05_5_decoder_only.html) |
+| **Scaling laws, emergence** | Ch. 5, [Lesson 5.6](05_6_scaling_laws.html) |
+| **Instruction tuning, FLAN, Self-Instruct, LIMA** | Ch. 6, Lessons [6.1](06_1_instruction_tuning.html)–[6.2](06_2_synthetic_instructions.html) |
+| **Prompting, chain-of-thought, POSIX sensitivity** | Ch. 6, [Lesson 6.3](06_3_prompting_cot.html) |
+| **RLHF, PPO, DPO** | Ch. 6, Lessons [6.4](06_4_reward_model.html)–[6.6](06_6_dpo.html) |
+| **Soft prompts, prefix tuning** | Ch. 7, [Lesson 7.1](07_1_soft_prefix_tuning.html) |
+| **Adapters, LoRA** | Ch. 7, [Lesson 7.2](07_2_adapters_lora.html) |
+| **Quantization** | Ch. 7, [Lesson 7.3](07_3_quantization.html) |
+| **QLoRA, pruning, distillation** | Ch. 7, [Lesson 7.4](07_4_qlora_prune_distill.html) |
+| **RAG, tools, agents, knowledge graphs** | Ch. 8, Lessons [8.1](08_1_rag.html)–[8.3](08_3_knowledge_graphs.html) |
+| **Multilingual, ViT, CLIP, VLM/VLA** | Ch. 9, Lessons [9.1](09_1_multilingual.html)–[9.3](09_3_vlm_vla.html) |
+| **Bias, toxicity, hallucination** | Ch. 10, Lessons [10.1](10_1_bias.html)–[10.2](10_2_toxicity_hallucination.html) |
+| **Reasoning, long context, model editing (ROME, MEMIT), self-evolution, interpretability** | Ch. 11, Lessons [11.1](11_1_reasoning.html)–[11.5](11_5_interpretability.html) |
+
+:::
 
 ---
 
