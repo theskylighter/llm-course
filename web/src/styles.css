@@ -77,16 +77,20 @@ button { font: inherit; color: inherit; }
 /* ---------- top bar ---------- */
 .topbar {
   position: sticky; top: 0; z-index: 20; height: var(--topbar-h);
-  display: flex; align-items: center; gap: 12px; padding: 0 16px;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center; gap: 12px; padding: 0 16px;
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: saturate(180%) blur(8px);
   border-bottom: 1px solid var(--line);
 }
+.topbar-start { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 650; color: var(--fg); text-decoration: none; white-space: nowrap; }
 .brand .icon { color: var(--accent); }
 .topbar-sep { color: var(--faint); }
 .ptitle { flex: 1; min-width: 0; color: var(--muted); font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.topbar-actions { display: flex; align-items: center; gap: 4px; }
+.topbar-search { justify-self: center; width: 260px; }
+.topbar-actions { justify-self: end; display: flex; align-items: center; gap: 4px; }
+.github-icon { width: 18px; height: 18px; }
 
 /* Reading progress: shown only where the right-hand "On this page" panel is hidden. */
 .reading-progress { display: none; }
@@ -380,8 +384,10 @@ code, pre, .codewrap pre { font-variant-ligatures: none; font-feature-settings: 
 }
 @media (max-width: 600px) {
   .topbar { gap: 6px; padding: 0 10px; }
+  .topbar-start { gap: 6px; }
   .topbar-sep, .ptitle { display: none; }
   .brand { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .topbar-actions { gap: 0; }
   .topbar .icon-btn, .topbar .btn-ghost { width: 40px; height: 40px; padding: 0; }
   .btn-ghost .label { display: none; }
   .codelabel { display: none; }   /* the language tag would overlap the first line of code */
