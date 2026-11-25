@@ -88,9 +88,9 @@ button { font: inherit; color: inherit; }
 .brand .icon { color: var(--accent); }
 .topbar-sep { color: var(--faint); }
 .ptitle { flex: 1; min-width: 0; color: var(--muted); font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.topbar-search { justify-self: center; width: 260px; }
+.topbar-search { width: 260px; }
 .topbar-actions { justify-self: end; display: flex; align-items: center; gap: 4px; }
-.github-icon { width: 18px; height: 18px; }
+.github-icon { width: 18px; height: 18px; fill: currentColor; }
 
 /* Reading progress: shown only where the right-hand "On this page" panel is hidden. */
 .reading-progress { display: none; }

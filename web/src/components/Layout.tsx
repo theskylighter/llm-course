@@ -112,20 +112,20 @@ export function Layout() {
           )}
           <span className="ptitle">{current ? current.title : ""}</span>
         </div>
-        <button
-          type="button"
-          className="btn-ghost search-btn topbar-search"
-          onClick={() => setSearchOpen(true)}
-          onPointerEnter={() => void loadSearch()}
-          onFocus={() => void loadSearch()}
-          aria-label="Search"
-          aria-keyshortcuts="Control+K Meta+K"
-        >
-          <Search className="icon" size={16} aria-hidden="true" />
-          <span className="label">Search</span>
-          <kbd className="search-kbd">{/Mac|iPhone|iPad/.test(navigator.platform) ? "⌘K" : "Ctrl K"}</kbd>
-        </button>
         <div className="topbar-actions">
+          <button
+            type="button"
+            className="btn-ghost search-btn topbar-search"
+            onClick={() => setSearchOpen(true)}
+            onPointerEnter={() => void loadSearch()}
+            onFocus={() => void loadSearch()}
+            aria-label="Search"
+            aria-keyshortcuts="Control+K Meta+K"
+          >
+            <Search className="icon" size={16} aria-hidden="true" />
+            <span className="label">Search</span>
+            <kbd className="search-kbd">{/Mac|iPhone|iPad/.test(navigator.platform) ? "⌘K" : "Ctrl K"}</kbd>
+          </button>
           <button type="button" className="btn-ghost" onClick={toggleAnswers} aria-pressed={showAll}>
             {showAll ? (
               <EyeOff className="icon" size={16} aria-hidden="true" />
