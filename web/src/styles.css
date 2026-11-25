@@ -77,7 +77,7 @@ button { font: inherit; color: inherit; }
 /* ---------- top bar ---------- */
 .topbar {
   position: sticky; top: 0; z-index: 20; height: var(--topbar-h);
-  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
   align-items: center; gap: 12px; padding: 0 16px;
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: saturate(180%) blur(8px);
