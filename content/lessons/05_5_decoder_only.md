@@ -12,6 +12,10 @@
 > [!slides] Encoders versus decoders (Lec_19)
 > BERT is a Transformer encoder: bidirectional attention, trained with MLM, $P(x_i\mid x_1..x_{i-1},x_{i+1}..x_n)$. GPT and LLaMA are decoders: unidirectional attention, trained to predict the next token, $P(x_i\mid x_{<i})$. For an encoder you ignore this distribution and fine-tune for $P(y\mid x)$. A decoder you *use as a generator*.
 
+<<SVG:transformer_family_architectures:compact>>
+
+*Figure: The families differ in which tokens can attend to one another and in whether input and output use separate stacks.*
+
 ## The Objective
 
 Plain maximum-likelihood on sentences. By the chain rule

@@ -8,6 +8,10 @@
 
 An RNN decoder must wait for step $t-1$ before computing step $t$. We removed recurrence, so we should not have to wait.
 
+<<SVG:transformer_encoder_decoder:compact>>
+
+*Figure: The encoder reads the source; the masked decoder predicts target tokens while cross-attending to the encoder output.*
+
 > [!lecture] Lecture
 > The task in the paper is machine translation: given the source sentence, generate the target. During **training** we already know the translated sentence, so the whole target is fed in (shifted right, starting with `<START>`) and *all positions are processed in parallel* (this is why we needed the mask). Each top decoder state goes through a linear layer and a softmax to give a distribution over the vocabulary. We know the ground-truth token at that position, so we compute a cross-entropy error at **every position at the same time**, sum them, and backpropagate end to end. Unlike an RNN, we don't wait. At **test time** we generate token by token: sample or take the argmax, feed it back in, and generate the next.
 

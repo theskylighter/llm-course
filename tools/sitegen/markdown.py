@@ -9,6 +9,7 @@ Supported syntax
   :::type Title ... :::      boxes: def, analogy, mistakes, exam, key, note, tip, warn,
                              example, summary, q, ans, raw
   <<SVG:name>>               inline ``content/diagrams/name.svg``
+  <<SVG:name:compact>>       compact inline diagram wrapper
   `code` **bold** *italic* [link](url)
 """
 from __future__ import annotations
@@ -270,11 +271,12 @@ def _render_container(kind: str, title: str, inner: list[str], ctx: RenderContex
     return f'<div class="box {css_class}"><div class="boxtitle">{heading}</div>{body}</div>'
 
 
-def _svg_include(name: str) -> str:
+def _svg_include(name: str, compact: bool = False) -> str:
     path = DIAGRAMS_DIR / f"{name}.svg"
     if not path.exists():
         raise FileNotFoundError(f"missing diagram: {path}")
-    return f'<div class="svgwrap" tabindex="0" role="region" aria-label="Diagram; scroll horizontally on small screens">{path.read_text(encoding="utf-8")}</div>'
+    wrapper_class = "svgwrap svgwrap--compact" if compact else "svgwrap"
+    return f'<div class="{wrapper_class}" tabindex="0" role="region" aria-label="Diagram; scroll horizontally on small screens">{path.read_text(encoding="utf-8")}</div>'
 
 
 # --------------------------------------------------------------------------- blocks
@@ -326,10 +328,10 @@ def render_blocks(lines: list[str], ctx: RenderContext) -> str:
             i = j + 1
             continue
 
-        m = re.match(r"^<<SVG:(\w+)>>$", s)
+        m = re.match(r"^<<SVG:(\w+)(:compact)?>>$", s)
         if m:
             flush()
-            out.append(_svg_include(m.group(1)))
+            out.append(_svg_include(m.group(1), compact=bool(m.group(2))))
             i += 1
             continue
 
