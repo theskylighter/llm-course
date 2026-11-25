@@ -1,3 +1,7 @@
+<<SVG:mqa_gqa_kv_sharing>>
+
+*Figure: More query heads can share fewer K/V heads: GQA balances cache savings with representational flexibility.*
+
 **Multi-query attention shares one key/value head across all query heads, and grouped-query attention shares one per group; both shrink the KV-cache by $h/G$ at little quality cost.** Only $W_K$ and $W_V$ get smaller.
 
 ## The Problem: the Cache Formula Has a Knob

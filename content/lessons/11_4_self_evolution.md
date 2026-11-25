@@ -1,3 +1,7 @@
+<<SVG:self_evolution_verifier_loop>>
+
+*Figure: A verifier selects generated candidates for fine-tuning; accepted outputs seed the next round.*
+
 **Self-evolving LLMs generate data, judge it with a verifier and fine-tune on the keepers, repeating the loop; everything hangs on the verifier.** STaR, ReST and constitutional AI are instances.
 
 ## The Problem: Humans Are the Bottleneck

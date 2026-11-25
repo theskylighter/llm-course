@@ -1,3 +1,7 @@
+<<SVG:nlp_ambiguity_stack>>
+
+*Figure: The NLP stack moves from tokenization to discourse; syntax can give one sentence two valid readings.*
+
 **NLP is hard mainly because language is ambiguous at every layer, and we handle it by working through a stack: tokens, morphology, syntax, semantics, pragmatics, discourse.** Know this stack in order; it is a favourite short-answer question.
 
 ## The Problem: One Sentence, Two Meanings

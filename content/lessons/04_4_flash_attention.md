@@ -1,3 +1,7 @@
+<<SVG:flash_attention_tiles_online_softmax>>
+
+*Figure: FlashAttention keeps tiles on-chip and updates softmax incrementally, avoiding full score/probability matrices in HBM.*
+
 **FlashAttention returns exactly the same output as standard attention but never stores the $n\times n$ matrix in slow GPU memory; it tiles the computation and uses an online softmax.** The gain is in memory traffic, not FLOPs.
 
 ## The Problem: the Bottleneck Is Memory Traffic, Not Arithmetic

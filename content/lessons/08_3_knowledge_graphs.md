@@ -1,3 +1,7 @@
+<<SVG:knowledge_graph_triples_completion>>
+
+*Figure: Triple paths answer multi-hop questions; link predictors estimate missing facts, and retrieved subgraphs can ground LLM responses.*
+
 **A knowledge graph stores facts as (subject, relation, object) triples; it is useful but very incomplete, so we complete it by scoring triples with geometric models such as TransE (translation) and RotatE (rotation).** KGs also guard LLMs against hallucination.
 
 ## The Problem: LLMs Hide Facts in Opaque Weights

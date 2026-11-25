@@ -1,3 +1,7 @@
+<<SVG:reasoning_methods_ladder>>
+
+*Figure: Reasoning methods spend more tokens or search for accuracy; PAL hands exact arithmetic to an interpreter.*
+
 **Reasoning prompts trade tokens for accuracy: write the steps, vote over several chains, search over a tree of thoughts, or let a program do the exact computation.** Part of the gain is pattern retrieval, so prefer answers you can verify.
 
 > [!compiler] Source note

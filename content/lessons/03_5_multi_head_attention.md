@@ -1,3 +1,7 @@
+<<SVG:multi_head_attention_parallel_heads>>
+
+*Figure: Separate narrow heads attend in parallel; concatenation and the output projection mix their information.*
+
 **Multi-head attention runs several attention functions in parallel on narrower slices, so one layer can look at several positions for several reasons.** The heads are concatenated and mixed back by an output matrix $W_O$.
 
 ## The Problem: One Softmax, One Focus

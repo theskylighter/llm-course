@@ -1,3 +1,7 @@
+<<SVG:perplexity_average_surprise>>
+
+*Figure: Average held-out token log loss, then exponentiate to perplexity; compare models on the same test set and vocabulary.*
+
 **Perplexity measures how surprised a language model is by held-out text, and lower is better.** It is the exponentiated cross-entropy, and it equals the inverse probability of the test set normalised by length.
 
 ## The Problem: How Do We Say One LM Beats Another?

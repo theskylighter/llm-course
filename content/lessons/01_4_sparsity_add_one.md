@@ -1,3 +1,7 @@
+<<SVG:add_one_smoothing_mass>>
+
+*Figure: Add-one changes the unseen “rains” continuation from zero to a positive probability by adding one pseudo-count per vocabulary item.*
+
 **Most possible bigrams never appear in training, so an N-gram model gives them probability zero; smoothing moves a little probability mass to unseen events.** The simplest version is add-one (Laplace) smoothing.
 
 ## The Problem: 99.95% of the Table Is Zero

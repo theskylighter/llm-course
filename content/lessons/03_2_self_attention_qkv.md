@@ -1,3 +1,7 @@
+<<SVG:self_attention_qkv>>
+
+*Figure: For the token “cat”, compare its query against every key, then use the softmax weights to mix the corresponding values.*
+
 **Self-attention lets every token play three roles at once: a query that asks, a key that is matched, and a value that is returned.** The output is a softmax-weighted sum of values.
 
 ## The Problem: Seq2Seq Attention Had Fixed Roles

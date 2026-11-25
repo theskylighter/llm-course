@@ -311,9 +311,12 @@ th, td { padding: 8px 12px; text-align: left; vertical-align: top; border-bottom
 th { background: var(--bg-subtle); font-weight: 600; }
 tr:last-child td { border-bottom: 0; }
 td + td, th + th { border-left: 1px solid var(--line); }
-.svgwrap { margin: 16px 0; padding: 12px; overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
-.svgwrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
-svg text { font-family: system-ui, "Segoe UI", sans-serif; }
+.svgwrap { position: relative; left: 50%; transform: translateX(-50%); width: min(990px, calc(90vw - var(--left-w) - var(--right-w) - 48px)); margin: 16px 0; padding: 12px; overflow-x: auto; overscroll-behavior-x: contain; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+.svgwrap svg { display: block; width: 100%; margin: 0 auto; max-width: 100%; height: auto; }
+@media (max-width: 1200px) and (min-width: 901px) { .svgwrap { width: min(990px, calc(90vw - var(--left-w) - 48px)); } }
+@media (max-width: 900px) { .svgwrap { width: calc(90vw - 32px); } }
+@media (max-width: 700px) { .svgwrap { left: auto; transform: none; margin: 16px auto; } .svgwrap svg { width: 680px; max-width: none; } }
+svg text:not([font-family]) { font-family: system-ui, "Segoe UI", sans-serif; }
 
 /* ---------- home roadmap & pager ---------- */
 .roadmap { display: grid; gap: 14px; margin: 18px 0; }

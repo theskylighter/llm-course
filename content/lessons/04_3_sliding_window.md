@@ -1,3 +1,7 @@
+<<SVG:sliding_window_band_receptive_field>>
+
+*Figure: A moving local window bounds each layer’s attention and cache; stacking layers extends how far information can travel.*
+
 **Sliding-window attention lets each token attend only to the last $w$ tokens, giving $O(nw)$ cost and a fixed-size rolling cache, while stacked layers still reach about $L\cdot w$ tokens back.** Longformer adds a few global tokens.
 
 ## The Problem: Why Should Token 50,000 Attend to Token 3?

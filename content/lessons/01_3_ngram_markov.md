@@ -1,3 +1,7 @@
+<<SVG:ngram_markov_context>>
+
+*Figure: N-grams shorten the history to the previous N−1 words, making contexts countable at the cost of information.*
+
 **The chain rule gives the exact probability of a sentence, but it needs histories that never repeat; the Markov assumption shortens the history so that we can count.** An N-gram model conditions on only the previous $N-1$ words.
 
 ## The Problem: We Cannot Count Whole Sentences

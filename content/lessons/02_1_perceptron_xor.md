@@ -1,3 +1,7 @@
+<<SVG:perceptron_xor_hidden_layer>>
+
+*Figure: A single threshold can separate AND and OR, but XOR requires a hidden layer to build useful features.*
+
 **A perceptron computes a weighted sum, adds a bias and applies a step; it can draw one straight line, which is why it can learn AND and OR but never XOR.** The fix is a hidden layer.
 
 ## The Problem: Every Input Counts the Same

@@ -1,3 +1,7 @@
+<<SVG:kv_cache_reuse_past>>
+
+*Figure: KV caching avoids recomputing past keys and values; only the new token’s projections are added, while attention still reads the cache.*
+
 **In a decoder, the keys and values of past tokens never change, so we store them and compute only the new token's projections at each step.** The cost of generation falls from quadratic to linear in the number of weight-matrix multiplications, and the price is a large memory cache.
 
 > [!compiler] Source note

@@ -274,7 +274,7 @@ def _svg_include(name: str) -> str:
     path = DIAGRAMS_DIR / f"{name}.svg"
     if not path.exists():
         raise FileNotFoundError(f"missing diagram: {path}")
-    return f'<div class="svgwrap">{path.read_text(encoding="utf-8")}</div>'
+    return f'<div class="svgwrap" tabindex="0" role="region" aria-label="Diagram; scroll horizontally on small screens">{path.read_text(encoding="utf-8")}</div>'
 
 
 # --------------------------------------------------------------------------- blocks

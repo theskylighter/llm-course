@@ -1,3 +1,7 @@
+<<SVG:elmo_contextual_word_vectors>>
+
+*Figure: ELMo’s frozen forward/backward LSTM produces context-dependent token states, which a task-specific mix combines.*
+
 **Static word vectors give "bat" the same vector in every sentence; ELMo fixes this by running a language model over the sentence so each token's vector depends on its context.** It was the first step from pre-trained vectors to pre-trained models.
 
 ## The Problem: One Vector per Word

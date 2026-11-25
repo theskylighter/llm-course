@@ -1,3 +1,7 @@
+<<SVG:multilingual_shared_transfer>>
+
+*Figure: Shared subwords, weights, and geometry enable transfer; data imbalance and finite capacity make it uneven.*
+
 **Multilingual models share one vocabulary and one set of Transformer weights across about 100 languages, so what the model learns in a high-resource language transfers to others; the price is the curse of multilinguality and uneven transfer.** The objective stays monolingual; cross-lingual ability is a side effect.
 
 > [!compiler] Source note

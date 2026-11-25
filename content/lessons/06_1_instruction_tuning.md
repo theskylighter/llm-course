@@ -1,3 +1,7 @@
+<<SVG:instruction_tuning_example_loss>>
+
+*Figure: Instruction examples teach task-following through output-token loss; unlike prompting, tuning updates the model weights.*
+
 **Instruction tuning fine-tunes a base model on (instruction, input, output) examples so it follows natural-language tasks instead of just continuing text.** Weights are updated, unlike prompting.
 
 ## The Problem: A Base Model Continues, It Does Not Answer

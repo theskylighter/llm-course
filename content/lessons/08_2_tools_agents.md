@@ -1,3 +1,7 @@
+<<SVG:tools_agents_host_loop>>
+
+*Figure: The model emits a tool call; host code validates and runs it, then returns an observation to the bounded agent loop.*
+
 **Tool use lets a model emit a function call as text that your code executes; an agent wraps such calls in a plan, act, observe loop with memory.** The model only writes text; your code runs the tool.
 
 ## The Problem: Some Things Are Not Text

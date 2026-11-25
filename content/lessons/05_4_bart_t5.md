@@ -1,3 +1,7 @@
+<<SVG:bart_t5_corruption_targets>>
+
+*Figure: BART reconstructs the complete clean sequence; T5 predicts only sentinel-marked spans.*
+
 **BART corrupts the input and makes the decoder regenerate the whole clean text; T5 casts every task as text-to-text and pre-trains by replacing spans with sentinels and predicting only the spans.** Both use the full encoder-decoder.
 
 ## The Problem: Encoder-Decoder Needs Labelled Pairs

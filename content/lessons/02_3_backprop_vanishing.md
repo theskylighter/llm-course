@@ -1,3 +1,7 @@
+<<SVG:backprop_chain_rule_vanishing>>
+
+*Figure: Backprop applies the chain rule from loss to weights; multiplying many small derivatives can make gradients vanish.*
+
 **Backpropagation applies the chain rule to values stored during the forward pass; in deep networks the gradient becomes a product of many small numbers and vanishes.** Residual connections, gating and attention are the later cures.
 
 ## The Problem: Thousands of Weights, One Loss

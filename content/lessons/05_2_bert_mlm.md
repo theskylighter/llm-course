@@ -1,3 +1,7 @@
+<<SVG:bert_mlm_corrupt_predict>>
+
+*Figure: BERT chooses 15% of tokens, applies the 80/10/10 corruption rule, and computes loss only at those positions.*
+
 **BERT is an encoder-only Transformer trained to predict hidden tokens from both sides: 15% of tokens are chosen, 80% become [MASK], 10% a random token, 10% stay unchanged.** The loss is computed only at the chosen positions.
 
 ## The Problem: A Bidirectional Model Cannot Be a Left-to-Right LM

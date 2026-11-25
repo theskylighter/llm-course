@@ -1,3 +1,7 @@
+<<SVG:language_model_score_generate>>
+
+*Figure: A language model scores whole sequences and generates by sampling the next token from a context-conditioned distribution.*
+
 **A language model assigns a probability to a sequence of tokens, and generating text is just sampling the next token from that distribution.** That is the whole job. Everything else in this course is a better way of doing it.
 
 ## The Problem: How Does a Machine Choose Between Two Sentences?

@@ -1,3 +1,7 @@
+<<SVG:causal_mask_cross_attention>>
+
+*Figure: The causal mask blocks future target positions; cross-attention lets decoder queries read encoder states.*
+
 **A decoder must not see the future, so we add $-\infty$ above the diagonal of the score matrix; cross-attention then links the decoder to the encoder with queries from one and keys and values from the other.** These two ideas turn self-attention into a translator.
 
 ## The Problem: Looking Ahead Is Cheating

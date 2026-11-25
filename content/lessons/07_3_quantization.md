@@ -1,3 +1,7 @@
+<<SVG:quantization_absmax_outliers>>
+
+*Figure: Absmax quantization maps FP32 values to INT8 with a scale; a large outlier can collapse small values without mixed precision.*
+
 **Quantization stores weights and activations in fewer bits, such as INT8 instead of FP32, trading a small rounding error for large savings in memory and cost.** Outliers in large models break the naive version.
 
 ## The Problem: The Model Is Too Big to Run

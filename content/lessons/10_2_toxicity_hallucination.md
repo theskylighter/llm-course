@@ -1,3 +1,7 @@
+<<SVG:toxicity_hallucination_checks>>
+
+*Figure: Toxicity concerns harmful content; hallucination concerns unsupported facts or input conflicts. Classify, verify claims, ground, or abstain.*
+
 **Toxicity is harmful generated text and hallucination is fluent text that conflicts with facts or with the given input; both are properties of fitting $P(x_t\mid x_{<t})$, so we measure them with classifiers and claim-level scores and reduce them by grounding, abstention and alignment.** Hallucination is not lying: there is no intent.
 
 ## The Problem: The Loss Never Says "I Don't Know"

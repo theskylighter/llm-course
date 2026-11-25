@@ -1,3 +1,7 @@
+<<SVG:transformer_remove_recurrence>>
+
+*Figure: Self-attention removes the sequential dependency between token states, enabling parallel work—but positional information is needed to recover order.*
+
 **If every state can already see every other state through attention, the recurrent links are only a speed bump; removing them gives parallelism but costs us the sense of order.** The rest of the chapter is the list of repairs.
 
 ## The Problem: Why Do We Still Need Recurrence?

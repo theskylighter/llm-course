@@ -1,3 +1,7 @@
+<<SVG:bias_lifecycle_measure_mitigate>>
+
+*Figure: Bias can arise in data, model behavior, or deployment; mitigate at each stage and measure outcomes with appropriate metrics.*
+
 **Bias is a distortion in a model's responses that reflects stereotypical beliefs in society; we see it in names, completions and preferences, measure it with StereoSet and Regard, and mitigate it at several points in the pipeline.** There is no unbiased model, only one that is measured, documented and monitored.
 
 > [!compiler] Source note

@@ -1,3 +1,7 @@
+<<SVG:long_context_failure_modes>>
+
+*Figure: ALiBi and Position Interpolation address position range; ring attention reduces per-device memory, while “fits” does not guarantee “used.”*
+
 **Long context fails in three ways: positions never seen in training, memory that grows with length, and uneven use of the middle of the text; ALiBi, Position Interpolation and ring attention address the first two.** ALiBi adds a distance penalty to scores; PI squeezes new positions into the trained range.
 
 ## The Problem: "Can It Read a Whole Book?"

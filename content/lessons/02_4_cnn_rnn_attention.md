@@ -1,3 +1,7 @@
+<<SVG:neural_lm_cnn_rnn_attention_bridge>>
+
+*Figure: Attention lets each decoder state retrieve relevant encoder states instead of relying on a fixed window or one compressed summary.*
+
 **Neural LMs replace count tables with vectors, but CNN windows are fixed, RNNs forget, and seq2seq squeezes the whole input into one vector; attention fixes the last problem.** This lesson is the bridge to the Transformer.
 
 ## The Problem: What N-grams Could Not Do

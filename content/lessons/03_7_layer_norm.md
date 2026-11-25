@@ -1,3 +1,7 @@
+<<SVG:layer_norm_per_token>>
+
+*Figure: LayerNorm normalizes each token across its own features, independent of batch size.*
+
 **Layer normalization standardizes each token's own feature vector, so it needs no batch statistics and behaves the same in training and inference.** That is why Transformers use it instead of batch normalization.
 
 ## The Problem: Features Live on Different Scales

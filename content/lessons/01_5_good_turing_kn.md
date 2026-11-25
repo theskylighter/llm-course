@@ -1,3 +1,7 @@
+<<SVG:good_turing_kneser_ney>>
+
+*Figure: Good–Turing estimates unseen mass from singleton counts; Kneser–Ney rewards words with diverse left contexts.*
+
 **Add-one is too blunt, so the smoothing ladder climbs: Good-Turing estimates unseen mass from things seen once, interpolation mixes N-gram orders, and Kneser-Ney asks how likely a word is to appear as a *new continuation*.** Examiners like this ladder.
 
 ## The Problem: Each Fix Fails in a New Way

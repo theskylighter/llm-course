@@ -1,3 +1,7 @@
+<<SVG:vlm_vla_modalities_to_actions>>
+
+*Figure: A VLM turns visual tokens and text into answers; a VLA adds an action head that controls a robot.*
+
 **Vision–Language Models (VLMs) and Vision–Language–Action Models (VLAs)** form the frontier where language understanding meets visual perception and robotic control. This lesson answers the foundational questions: what they are, how they differ from plain LLMs, how they evolved, and where they are headed.
 
 ---

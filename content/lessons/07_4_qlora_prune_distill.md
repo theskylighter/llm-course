@@ -1,3 +1,7 @@
+<<SVG:qlora_prune_distill_methods>>
+
+*Figure: QLoRA reduces fine-tuning memory; pruning removes weights; distillation transfers a teacher’s outputs to a smaller student.*
+
 **QLoRA fine-tunes LoRA adapters on top of a frozen 4-bit quantized base model, bringing a 65B model from over 780 GB to under 48 GB; pruning removes weights; distillation trains a small student to imitate a large teacher.** Together they make big models cheap.
 
 ## The Problem: The Frozen Model Is Still Too Big to Train Against

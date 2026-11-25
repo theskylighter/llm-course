@@ -1,3 +1,7 @@
+<<SVG:vit_clip_patches_alignment>>
+
+*Figure: ViT feeds patch tokens to a standard encoder; CLIP pulls matched image/text pairs together and separates mismatches.*
+
 **A Vision Transformer cuts an image into patches and treats them as tokens for a standard Transformer encoder; CLIP aligns image and text encoders with a contrastive loss; vision-language models connect a vision encoder to an LLM through a small trainable connector.** The language model gets eyes without being retrained from scratch.
 
 ## The Problem: A Transformer Expects a 1-D Sequence of Tokens

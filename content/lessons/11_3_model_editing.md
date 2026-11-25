@@ -1,3 +1,7 @@
+<<SVG:model_editing_three_tests>>
+
+*Figure: Test an edit on the target, paraphrases, and unrelated prompts to measure efficacy, generalization, and locality.*
+
 **Model editing changes one fact in a trained model without retraining; a good edit is efficacious, generalises to paraphrases and leaves unrelated behaviour alone.** KnowledgeEditor predicts the weight update with a hypernetwork under a KL constraint; ROME writes a rank-one update into a mid-layer MLP.
 
 ## The Problem: "A Fact Changed. Can I Fix It Without Retraining?"

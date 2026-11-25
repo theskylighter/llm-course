@@ -1,3 +1,7 @@
+<<SVG:decoder_only_causal_parallel>>
+
+*Figure: The causal mask permits parallel next-token training at all positions, while generation samples and appends one token at a time.*
+
 **Decoder-only models are trained to predict the next token with a causal mask, so every position gives a training signal in one pass, and the same model generates text by sampling.** They need roughly half the parameters of an encoder-decoder.
 
 ## The Problem: Encoders Cannot Generate, Encoder-Decoders Are Heavy

@@ -1,3 +1,7 @@
+<<SVG:bert_cls_nsp_qa>>
+
+*Figure: BERT’s [CLS] state supports sentence-level classification; extractive QA predicts a start and end token span.*
+
 **BERT adds next-sentence prediction, a [CLS] summary token and segment embeddings, and is fine-tuned for question answering with two heads that mark the start and end of the answer span.** The same [CLS] trick fails in GPT-style models.
 
 ## The Problem: One Objective Does Not Teach Sentence Relations

@@ -1,3 +1,7 @@
+<<SVG:rlhf_ppo_reward_to_updates>>
+
+*Figure: A terminal reward and reference-policy KL feed PPO; a value head estimates credit for the sampled tokens.*
+
 **RLHF treats the language model as a policy that picks the next token, scores the finished answer with a reward model, and updates the policy with PPO while a KL term keeps it near the reference model.** REINFORCE gives the gradient; Q-values, advantages and clipping tame its variance.
 
 ## The Problem: The Reward Arrives Only at the End

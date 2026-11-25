@@ -1,3 +1,7 @@
+<<SVG:scaling_laws_chinchilla_balance>>
+
+*Figure: Under a fixed compute budget, Chinchilla’s rule scales data and parameters together at roughly 20 tokens per parameter.*
+
 **Test loss falls as a power law in parameters, data and compute, and Chinchilla showed that for a fixed compute budget model size and tokens should grow together, about 20 tokens per parameter.** Many earlier large models were under-trained.
 
 ## The Problem: How Do We Split a Compute Budget?

@@ -1,3 +1,7 @@
+<<SVG:lora_low_rank_update>>
+
+*Figure: LoRA adds a trainable low-rank update in parallel with frozen weights, then merges that update after training.*
+
 **Adapters insert small bottleneck modules in series, adding inference latency; LoRA learns a low-rank update $\Delta W=BA$ in parallel that can be merged into the weights, adding none.** LoRA starts with $B=0$ so the model is initially unchanged.
 
 ## The Problem: Soft Prompts Are Limited, Full Tuning Is Heavy

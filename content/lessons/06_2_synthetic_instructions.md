@@ -1,3 +1,7 @@
+<<SVG:synthetic_instruction_data>>
+
+*Figure: FLAN broadens task phrasing; Self-Instruct generates candidates from seeds and filters near-duplicates before adding them to the pool.*
+
 **Instruction data comes from reformatting benchmarks (FLAN), from many phrasings of one task, and from asking a model to write new tasks itself (Self-Instruct).** Quality matters more than quantity for style.
 
 ## The Problem: Human-Written Instructions Do Not Scale

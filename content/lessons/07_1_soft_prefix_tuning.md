@@ -1,3 +1,7 @@
+<<SVG:soft_prompt_prefix_layers>>
+
+*Figure: Soft prompts add learned vectors at input; prefix tuning adds key/value prefixes at every layer while the base stays frozen.*
+
 **Prompt tuning learns a few vectors prepended to the input while the whole model stays frozen; prefix tuning does the same at every layer.** Both train a tiny fraction of the parameters.
 
 ## The Problem: Fine-Tuning Costs Memory and Storage

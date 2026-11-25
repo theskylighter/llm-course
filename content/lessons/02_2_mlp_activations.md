@@ -1,3 +1,7 @@
+<<SVG:mlp_nonlinearity_layers>>
+
+*Figure: Without a nonlinear activation, stacked layers collapse to one linear map; nonlinear activations add expressive power.*
+
 **An MLP stacks layers of weighted sums followed by non-linear activations; without the non-linearity every layer collapses into one linear map.** Choosing the activation decides whether gradients survive.
 
 ## The Problem: Why Not Just Stack Linear Layers?

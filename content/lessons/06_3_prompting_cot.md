@@ -1,3 +1,7 @@
+<<SVG:prompting_cot_sensitivity>>
+
+*Figure: Prompts add task context without weight updates; CoT and voting can help, while paraphrases expose sensitivity.*
+
 **Prompting replaces fine-tuning for large models, chain-of-thought prompts make the model write its steps, and sensitivity measures how much a model's answer changes when the prompt is rephrased.** Report sensitivity next to accuracy.
 
 ## The Problem: Fine-Tuning Needs Data and Compute

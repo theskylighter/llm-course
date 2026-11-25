@@ -1,3 +1,7 @@
+<<SVG:scaled_dot_product_variance>>
+
+*Figure: Scaling by √dₖ restores unit score variance, keeping softmax from collapsing onto one position.*
+
 **Dot products of $d_k$-dimensional vectors have variance $d_k$, so large dimensions push softmax into saturation; dividing by $\sqrt{d_k}$ restores unit variance.** That is the "scaled" in scaled dot-product attention.
 
 ## The Problem: Softmax Collapses on Large Scores

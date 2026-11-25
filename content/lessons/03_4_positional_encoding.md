@@ -1,3 +1,7 @@
+<<SVG:positional_encoding_order>>
+
+*Figure: A position vector is added to each token embedding; sinusoidal frequencies encode order without changing vector width.*
+
 **A good positional encoding gives every position a unique vector that is the same in every sequence; the sinusoid appears as the answer to the periodicity of binary numbers.** The professor teaches it as a ladder of failed attempts.
 
 ## The Problem: Self-Attention Cannot Tell Order

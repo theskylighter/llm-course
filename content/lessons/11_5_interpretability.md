@@ -1,3 +1,7 @@
+<<SVG:interpretability_residual_patching>>
+
+*Figure: QK reads and OV writes through the residual stream; activation patching tests a component’s causal contribution.*
+
 **The residual stream is a shared sum to which attention and FFN blocks write; QK circuits decide what a head reads, OV circuits what it writes; patching gives causal evidence and probes need control tasks.** Patchscopes generalize the logit lens.
 
 ## The Problem: "Why Did It Say That?"

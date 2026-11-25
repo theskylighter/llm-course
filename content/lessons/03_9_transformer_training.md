@@ -1,3 +1,7 @@
+<<SVG:transformer_teacher_forcing_training>>
+
+*Figure: Shifted targets let the model train on every next-token prediction in parallel; inference remains sequential.*
+
 **A Transformer is trained in parallel by feeding the whole target shifted right and computing a cross-entropy loss at every position at once; generation is still one token at a time.** This is teacher forcing combined with the causal mask.
 
 ## The Problem: How Do We Train an Encoder-Decoder in One Pass?

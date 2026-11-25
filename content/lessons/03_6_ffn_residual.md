@@ -1,3 +1,7 @@
+<<SVG:transformer_ffn_residual_block>>
+
+*Figure: Attention passes information between tokens; the position-wise FFN processes it, with residual paths supporting gradients.*
+
 **Self-attention only moves information around linearly; the position-wise feed-forward network adds non-linearity and acts as the model's memory, while residual connections keep gradients alive.** A Transformer block is attention plus FFN, each wrapped in add and norm.
 
 ## The Problem: Attention Is (Almost) Linear

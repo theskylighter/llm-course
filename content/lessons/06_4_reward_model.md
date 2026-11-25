@@ -1,3 +1,7 @@
+<<SVG:reward_model_pairwise_preferences>>
+
+*Figure: A preference pair trains the reward gap; Bradley–Terry converts that gap into the probability that the preferred answer wins.*
+
 **A reward model scores a response with a single number, and it is trained from human comparisons using the Bradley-Terry model, whose loss is the negative log-sigmoid of the reward gap.** Asking humans which of two answers is better is easier than asking for a score.
 
 ## The Problem: Humans Cannot Be in the Loop at Every Step
