@@ -165,16 +165,20 @@ def _split_row(line: str) -> list[str]:
         line = line[1:]
     if line.endswith("|") and not line.endswith("\\|"):
         line = line[:-1]
-    cells, current, in_tick, i = [], "", False, 0
+    cells, current, in_tick, in_math, i = [], "", False, False, 0
     while i < len(line):
         c = line[i]
         if c == "\\" and i + 1 < len(line) and line[i + 1] == "|":
             current += "|"
             i += 2
             continue
-        if c == "`" or (c == "$" and not in_tick and (i == 0 or line[i - 1] != "\\")):
+        # a pipe inside `code` or $math$ belongs to the cell; track the two separately so a
+        # closing $ (or backtick) really ends its span
+        if c == "`" and not in_math:
             in_tick = not in_tick
-        if c == "|" and not in_tick:
+        elif c == "$" and not in_tick and (i == 0 or line[i - 1] != "\\"):
+            in_math = not in_math
+        if c == "|" and not in_tick and not in_math:
             cells.append(current.strip())
             current = ""
         else:
